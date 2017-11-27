@@ -1,0 +1,44 @@
+	<header>
+		<div class="ek-slider">
+			<div class="ek-logo_div">
+				<div class="ek-logo"></div>
+			</div>		
+		</div>
+
+		<nav>
+			<div class="container">
+				<span class="fa fa-bars" id="ek-res_menu" ng-click="showMenu = !showMenu"></span>
+				<span id="ek-res_logo">EKO-PLAN</span>
+				<span class="fa fa fa-shopping-cart" id="ek-res_cart" ng-click="showCart = !showCart"></span>
+				<ul class="ek-menu" ng-class="{true: 'showMenu'}[showMenu]">
+					<li>
+						<a href="#!/" data-hover="Početna">Početna</a>
+					</li>
+					<li>
+						<a href="#!/prodavnica" data-hover="Prodavnica">Prodavnica</a>
+						<ul>
+							<li ng-repeat="category in $ctrl.categories">
+								<a href="#!/prodavnica/{{category.id}}" data-hover="{{category.name}}">{{category.name}}</a>
+							</li>
+						</ul>
+					</li>
+					<li class="ek-active">
+						<a href="#!/sibirski_limun" data-hover="Sibirski limun">Sibirski limun</a>
+					</li>
+					<li>
+						<a href="#!/paulovnija" data-hover="Paulovnija">Paulovnija</a>
+					</li>
+					<li>
+						<a href="#!/galanterija" data-hover="Galanterija">Galanterija</a>
+					</li>
+					<li>
+						<a href="#!/kontakt" data-hover="Kontakt">Kontakt</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+
+	<content>
+		<iframe src="http://milosevicmarkoekop.wixsite.com/sibirski-limun" class="ek-iframe"></iframe>
+	</content>

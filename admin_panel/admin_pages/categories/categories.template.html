@@ -1,0 +1,134 @@
+<div class="ek-admin_header">
+	<div class="ek-logo"></div>
+	<div class="ek-admin_user_info">
+		<i class="fa fa-user" aria-hidden="true"></i><br>
+		<span>Marko Milosevic</span><br>
+		<a href="#!/ekoplan_adminPanel" class="ek-cart_pay">LOGOUT</a>
+	</div>
+</div>
+<div class="ek-admin_side_nav">
+	<ul>
+		<li class="mt0">
+			<a href="#!/admin_porudzbine">Porudžbine</a>
+			<span class="ek-admin_notification">{{($ctrl.orders | filter: {seen: false}).length}}</span>
+		</li>
+		<li class="ek-active">
+			<a href="#!/admin_kategorije">Kategorije</a>
+		</li>
+		<li>
+			<a href="#!/admin_proizvodi">Proizvodi</a>
+		</li>
+	</ul>
+</div>
+<content class="ek-admin_orders">
+	<h2>Kategorije</h2>
+
+	<button class="ek-cart_pay" data-toggle="modal" data-target="#categoryModalADD">DODAJ novu KATEGORIJU</button>
+
+	<table class="table table-hover ek-checkout_table">
+      <thead>
+        <th>Ime</th>
+        <th>Slika</th>
+        <th>Odabrane</th>
+        <th></th>
+      </thead>
+
+      <tbody>
+        <tr ng-repeat="category in categories" class="ek-admin_categories">
+          <td>{{category.name}}</td>
+          <td>
+          	<img ng-src="{{category.imageUrl}}" />
+          </td>
+          <td><span ng-class="{true:'fa fa-check', false:'fa fa-times'}[category.firstPage]"></span></td>
+          <td style="width:5%;">
+          	<a href="" ng-click="editCateogry(category.id, category.name, category.imageUrl, category.firstPage)" data-toggle="modal" data-target="#categoryModal">
+          		<i class="fa fa-pencil" aria-hidden="true"></i>
+          	</a>
+          	<a href="">
+          		<i class="fa fa-remove" aria-hidden="true" ng-click="deleteCategory(category.id)"></i>
+          	</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+</content>
+
+<div class="modal fade" id="categoryModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Kategorija</h4>
+      </div>
+      <div class="modal-body">
+        <form method="POST" action="http://rasadnikekoplan.com/ekoPlanAPI/Category/updateCategoryImage" enctype="multipart/form-data">
+       	<!-- <form method="POST" action="localhost/ekoPlanAPI/Category/insertCategoryImage"> -->
+       		  <div class="form-group">
+                <label for="cat_name">Ime kategorije*</label>
+                <input type="text" value="{{name}}" ng-model="name" name="updateName" class="form-control" id="cat_name" placeholder="Ime" required />
+                <input type="hidden" value="{{id}}" ng-model="id" name="categoryID" />
+            </div>
+            <div class="form-group">
+                <label for="cat_img">Slika kategorije*</label>
+                <input type="file" id="cat_img" name="updateFile" placeholder="Ime" />
+            </div>
+            <div class="form-group">
+                <label for="cat_firstPage">Prva strana</label>
+                <input type="checkbox" value="{{firstPage}}" name="updateCategoryFirsPage" ng-checked="checkF(firstPage)" id="cat_firstPage" />
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="ek-cart_pay" data-dismiss="modal" style="float:left;background-color:#2d1604;">Zatvori</button>
+              <!-- <button type="button" class="ek-cart_pay" ng-click="saveEditCategory()">Sačuvaj</button> -->
+              <button type="submit" class="ek-cart_pay" >Sačuvaj</button>
+            </div>
+       	</form>
+      </div>
+     <!--  <div class="modal-footer"> -->
+       <!--  <button type="button" class="ek-cart_pay" data-dismiss="modal" style="float:left;background-color:#2d1604;">Zatvori</button> -->
+        <!-- <button type="button" class="ek-cart_pay" ng-click="saveEditCategory()">Sačuvaj</button> -->
+        <!-- <button type="submit" class="ek-cart_pay" >Sačuvaj</button> -->
+     <!--  </div> -->
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="categoryModalADD" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Kategorija</h4>
+      </div>
+      <div class="modal-body">
+        <!-- <form method="" action=""> -->
+        <form method="POST" action="http://rasadnikekoplan.com/ekoPlanAPI/Category/insertCategoryImage" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="cat_name">Ime kategorije*</label>
+                <input type="text" class="form-control" id="cat_name" ng-model="categoryName" name="categoryName" placeholder="Ime" required />
+            </div>
+            <div class="form-group">
+                <label for="cat_img">Slika kategorije*</label>
+                <input type="file" name="file" id="cat_img" placeholder="Ime" ng-model="file" ngf-select="onFileSelect($file)"  required />
+            </div>
+            <div class="form-group">
+                <label for="cat_firstPage">Prva strana</label>
+                <input type="checkbox" ng-model="categoryFirsPage" name="categoryFirsPage" ng-checked="checked(categoryFirsPage)" id="cat_firstPage" />
+            </div>
+            <!-- <button type="submit" class="ek-cart_pay" >Sačuvaj</button> -->
+            <div class="modal-footer">
+              <button type="button" class="ek-cart_pay" data-dismiss="modal" style="float:left;background-color:#2d1604;">Zatvori</button>
+              <!-- <button type="button" class="ek-cart_pay" ng-click="saveCategory()">Sačuvaj</button> -->
+              <button type="submit" class="ek-cart_pay" >Sačuvaj</button>
+            </div>
+        </form>
+      </div>
+      <!-- <div class="modal-footer"> -->
+        <!-- <button type="button" class="ek-cart_pay" data-dismiss="modal" style="float:left;background-color:#2d1604;">Zatvori</button> -->
+        <!-- <button type="button" class="ek-cart_pay" ng-click="saveCategory()">Sačuvaj</button> -->
+        <!-- <button type="submit" class="ek-cart_pay" >Sačuvaj</button> -->
+      <!-- </div> -->
+      
+    </div>
+  </div>
+</div>

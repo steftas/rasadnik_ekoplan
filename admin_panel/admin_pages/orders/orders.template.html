@@ -1,0 +1,93 @@
+<div class="ek-admin_header" data-ng-init="init()">
+	<div class="ek-logo"></div>
+	<div class="ek-admin_user_info">
+		<i class="fa fa-user" aria-hidden="true"></i><br>
+		<span>Marko Milosevic</span><br>
+		<a href="#!/ekoplan_adminPanel" class="ek-cart_pay">LOGOUT</a>
+	</div>
+</div>
+<div class="ek-admin_side_nav">
+	<ul>
+		<li class="ek-active mt0">
+			<a href="#!/admin_porudzbine">Porudžbine</a>
+			<span class="ek-admin_notification">{{($ctrl.orders | filter: {seen: false}).length}}</span>
+		</li>
+		<li>
+			<a href="#!/admin_kategorije">Kategorije</a>
+		</li>
+		<li>
+			<a href="#!/admin_proizvodi">Proizvodi</a>
+		</li>
+	</ul>
+</div>
+<content class="ek-admin_orders">
+	<h2>Porudžbine</h2>
+	<table class="table ek-checkout_table">
+      <thead>
+        <tr>
+          <th>Datum</th>
+          <th>Ime i Prezime</th>
+          <th>Adresa, Postanski br. i Grad</th>
+          <th>Telefon</th>
+          <th>Email</th>
+          <th>Proizvodi</th>
+          <th>Cena</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr ng-repeat="order in orders" ng-class="{true:'', false:'ek-order_seen'}[order.seen]">
+          <td>{{order.created_time}}</td>
+          <td>{{order.cust_name}} {{order.cust_lname}}</td>
+          <td>{{order.cust_adress}}, {{order.cust_post}}, {{order.cust_city}}</td>
+          <td>{{order.cust_phone}}</td>
+          <td>{{order.cust_email}}</td>
+          <td>
+            <!-- <table>
+              <tbody style="border:0;">
+                <tr ng-repeat="one in order.orders">
+                  <td>{{one.quantity}} x {{one.name}}</td>
+                </tr>
+              </tbody>              
+            </table> -->
+            <button class="btn btn-primary" ng-click="listOfOrders(order.id)"> Lista </button>
+          </td>
+          <td>{{order.price}},00 RSD</td>
+          <td style="width:5%;">
+            <a href="">
+              <i class="fa fa-remove" aria-hidden="true" ng-click="deleteOrder(order.id)"></i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+</content>
+
+<div class="modal fade" id="orders" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Narudzbine</h4>
+      </div>
+
+      <div class="modal-body">
+
+        <table class="table">
+          <thead class="thead-inverse">
+            <th> Proizvod </th>
+            <th> Kolicina </th>
+          </thead>
+          <tbody ng-repeat="order in ordersForModal">
+            <td> {{order.name}} </td>
+            <td> {{order.quantity}} </td>
+          </tbody>
+        </table>
+        <br>
+        <h3><p style="text-align:right"><b>UKUPNO: {{sum}} </b></p></h3>
+      </div>
+
+    </div>
+  </div>
+</div>

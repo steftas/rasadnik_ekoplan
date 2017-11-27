@@ -1,0 +1,242 @@
+[
+    {
+        "age": 0,
+        "categoryName": "Voće", 
+        "id": "Bela_jagoda", 
+        "images": [
+            "assets/img/proizvodi/bela_jagoda.jpg", 
+            "assets/img/proizvodi/beli_bor.jpg", 
+            "assets/img/proizvodi/paulovnija.jpg",
+            "assets/img/proizvodi/bela_jagoda2.jpg" 
+        ],
+        "name": "Bela jagoda",
+        "price": 300,
+        "stock": true,
+        "firstPage": true,
+        "description": "The Next, Next Generation\r\n\r\nExperience the future with Motorola XOOM with Wi-Fi, the world's first tablet powered by Android 3.0 (Honeycomb)."
+    }, 
+    {
+        "age": 1, 
+        "categoryName": "Četinari",
+        "id": "Beli_bor", 
+        "images": [
+            "assets/img/proizvodi/beli_bor.jpg", 
+            "assets/img/proizvodi/bela_jagoda.jpg", 
+            "assets/img/proizvodi/paulovnija.jpg", 
+            "assets/img/proizvodi/bela_jagoda2.jpg"
+        ],
+        "name": "Beli bor", 
+        "price": 500,
+        "stock": false,
+        "firstPage": true,
+        "description": "The Next, Next Generation\n\nExperience the future with MOTOROLA XOOM, the world's first tablet powered by Android 3.0 (Honeycomb)."
+    }, 
+    {
+        "age": 2, 
+        "id": "Paulovnija", 
+        "categoryName": "Lišćari",
+        "images": [
+            "assets/img/proizvodi/paulovnija.jpg", 
+            "assets/img/proizvodi/bela_jagoda.jpg", 
+            "assets/img/proizvodi/beli_bor.jpg", 
+            "assets/img/proizvodi/bela_jagoda2.jpg"
+        ],
+        "name": "Paulovnija",
+        "price": 650,
+        "stock": true,
+        "firstPage": true,
+        "description": "Introducing Dell\u2122 Streak 7. Share photos, videos and movies together. It\u2019s small enough to carry around, big enough to gather around."
+    },
+    {
+        "age": 3, 
+        "categoryName": "Voće", 
+        "id": "Bela_jagoda2", 
+        "images": [
+            "assets/img/proizvodi/bela_jagoda.jpg", 
+            "assets/img/proizvodi/beli_bor.jpg", 
+            "assets/img/proizvodi/paulovnija.jpg",
+            "assets/img/proizvodi/bela_jagoda2.jpg" 
+        ],
+        "name": "Bela jagoda",
+        "price": 400,
+        "stock": false,
+        "firstPage": true,
+        "description": "The Next, Next Generation\r\n\r\nExperience the future with Motorola XOOM with Wi-Fi, the world's first tablet powered by Android 3.0 (Honeycomb)."
+    }, 
+    {
+        "age": 4, 
+        "categoryName": "Četinari",
+        "id": "Beli bor2", 
+        "images": [
+            "assets/img/proizvodi/beli_bor.jpg", 
+            "assets/img/proizvodi/bela_jagoda.jpg", 
+            "assets/img/proizvodi/paulovnija.jpg", 
+            "assets/img/proizvodi/bela_jagoda2.jpg"
+        ], 
+        "name": "Beli bor", 
+        "price": 450,
+        "stock": true,
+        "firstPage": true,
+        "description": "The Next, Next Generation\n\nExperience the future with MOTOROLA XOOM, the world's first tablet powered by Android 3.0 (Honeycomb)."
+    }, 
+    {
+        "age": 5, 
+        "categoryName": "Lišćari",
+        "id": "Paulovnija2", 
+        "images": [
+            "assets/img/proizvodi/paulovnija.jpg", 
+            "assets/img/proizvodi/bela_jagoda.jpg", 
+            "assets/img/proizvodi/beli_bor.jpg", 
+            "assets/img/proizvodi/bela_jagoda2.jpg"
+        ],
+        "name": "Paulovnija",
+        "price": 625,
+        "stock": true,
+        "firstPage": true,
+        "description": "Introducing Dell\u2122 Streak 7. Share photos, videos and movies together. It\u2019s small enough to carry around, big enough to gather around."
+    },
+    {
+        "age": 6, 
+        "categoryName": "Voće",
+        "id": "Bela jagoda3", 
+        "images": [
+            "assets/img/proizvodi/bela_jagoda.jpg", 
+            "assets/img/proizvodi/beli_bor.jpg", 
+            "assets/img/proizvodi/paulovnija.jpg",
+            "assets/img/proizvodi/bela_jagoda2.jpg" 
+        ],
+        "name": "Bela jagoda",
+        "price": 180,
+        "stock": true,
+        "firstPage": true,
+        "description": "The Next, Next Generation\r\n\r\nExperience the future with Motorola XOOM with Wi-Fi, the world's first tablet powered by Android 3.0 (Honeycomb)."
+    }, 
+    {
+        "age": 7, 
+        "categoryName": "Četinari",
+        "id": "Beli bor3", 
+        "images": [
+            "assets/img/proizvodi/beli_bor.jpg", 
+            "assets/img/proizvodi/bela_jagoda.jpg", 
+            "assets/img/proizvodi/paulovnija.jpg", 
+            "assets/img/proizvodi/bela_jagoda2.jpg"
+        ],
+        "name": "Beli bor", 
+        "price": 200,
+        "stock": true,
+        "firstPage": true,
+        "description": "The Next, Next Generation\n\nExperience the future with MOTOROLA XOOM, the world's first tablet powered by Android 3.0 (Honeycomb)."
+    }, 
+    {
+        "age": 8, 
+        "categoryName": "Lišćari",
+        "id": "Paulovnija3", 
+        "images": [
+            "assets/img/proizvodi/paulovnija.jpg", 
+            "assets/img/proizvodi/bela_jagoda.jpg", 
+            "assets/img/proizvodi/beli_bor.jpg", 
+            "assets/img/proizvodi/bela_jagoda2.jpg"
+        ],
+        "name": "Paulovnija",
+        "price": 1000,
+        "stock": true,
+        "firstPage": true,
+        "description": "Introducing Dell\u2122 Streak 7. Share photos, videos and movies together. It\u2019s small enough to carry around, big enough to gather around."
+    },
+    {
+        "age": 9, 
+        "categoryName": "Voće",
+        "id": "Bela jagoda4", 
+        "images": [
+            "assets/img/proizvodi/bela_jagoda.jpg", 
+            "assets/img/proizvodi/beli_bor.jpg", 
+            "assets/img/proizvodi/paulovnija.jpg",
+            "assets/img/proizvodi/bela_jagoda2.jpg" 
+        ],
+        "name": "Bela jagoda",
+        "price": 180,
+        "stock": true,
+        "firstPage": false,
+        "description": "The Next, Next Generation\r\n\r\nExperience the future with Motorola XOOM with Wi-Fi, the world's first tablet powered by Android 3.0 (Honeycomb)."
+    }, 
+    {
+        "age": 10, 
+        "categoryName": "Četinari",
+        "id": "Beli bor4", 
+        "images": [
+            "assets/img/proizvodi/beli_bor.jpg", 
+            "assets/img/proizvodi/bela_jagoda.jpg", 
+            "assets/img/proizvodi/paulovnija.jpg", 
+            "assets/img/proizvodi/bela_jagoda2.jpg"
+        ],
+        "name": "Beli bor", 
+        "price": 200,
+        "stock": true,
+        "firstPage": false,
+        "description": "The Next, Next Generation\n\nExperience the future with MOTOROLA XOOM, the world's first tablet powered by Android 3.0 (Honeycomb)."
+    }, 
+    {
+        "age": 11, 
+        "categoryName": "Lišćari",
+        "id": "Paulovnija4", 
+        "images": [
+            "assets/img/proizvodi/paulovnija.jpg", 
+            "assets/img/proizvodi/bela_jagoda.jpg", 
+            "assets/img/proizvodi/beli_bor.jpg", 
+            "assets/img/proizvodi/bela_jagoda2.jpg"
+        ],
+        "name": "Paulovnija",
+        "price": 1000,
+        "stock": true,
+        "firstPage": false,
+        "description": "Introducing Dell\u2122 Streak 7. Share photos, videos and movies together. It\u2019s small enough to carry around, big enough to gather around."
+    },
+    {
+        "age": 12, 
+        "categoryName": "Voće",
+        "id": "Bela jagoda5", 
+        "images": [
+            "assets/img/proizvodi/bela_jagoda.jpg", 
+            "assets/img/proizvodi/beli_bor.jpg", 
+            "assets/img/proizvodi/paulovnija.jpg",
+            "assets/img/proizvodi/bela_jagoda2.jpg" 
+        ],
+        "name": "Bela jagoda",
+        "price": 180,
+        "stock": true,
+        "firstPage": false,
+        "description": "The Next, Next Generation\r\n\r\nExperience the future with Motorola XOOM with Wi-Fi, the world's first tablet powered by Android 3.0 (Honeycomb)."
+    }, 
+    {
+        "age": 13, 
+        "categoryName": "Četinari",
+        "id": "Beli bor5", 
+        "images": [
+            "assets/img/proizvodi/beli_bor.jpg", 
+            "assets/img/proizvodi/bela_jagoda.jpg", 
+            "assets/img/proizvodi/paulovnija.jpg", 
+            "assets/img/proizvodi/bela_jagoda2.jpg"
+        ],
+        "name": "Beli bor", 
+        "price": 200,
+        "stock": true,
+        "firstPage": false,
+        "description": "The Next, Next Generation\n\nExperience the future with MOTOROLA XOOM, the world's first tablet powered by Android 3.0 (Honeycomb)."
+    }, 
+    {
+        "age": 14, 
+        "categoryName": "Lišćari",
+        "id": "Paulovnija5", 
+        "images": [
+            "assets/img/proizvodi/paulovnija.jpg", 
+            "assets/img/proizvodi/bela_jagoda.jpg", 
+            "assets/img/proizvodi/beli_bor.jpg", 
+            "assets/img/proizvodi/bela_jagoda2.jpg"
+        ],
+        "name": "Paulovnija",
+        "price": 1000,
+        "stock": true,
+        "firstPage": false,
+        "description": "Introducing Dell\u2122 Streak 7. Share photos, videos and movies together. It\u2019s small enough to carry around, big enough to gather around."
+    }
+]

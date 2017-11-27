@@ -1,0 +1,71 @@
+	<header>
+		<div class="ek-slider">
+			<div class="ek-logo_div">
+				<div class="ek-logo"></div>
+			</div>		
+		</div>
+
+		<nav>
+			<div class="container">
+				<span class="fa fa-bars" id="ek-res_menu" ng-click="showMenu = !showMenu"></span>
+				<span id="ek-res_logo">EKO-PLAN</span>
+				<span class="fa fa fa-shopping-cart" id="ek-res_cart" ng-click="showCart = !showCart"></span>
+				<ul class="ek-menu" ng-class="{true: 'showMenu'}[showMenu]">
+					<li>
+						<a href="#!/" data-hover="Početna">Početna</a>
+					</li>
+					<li>
+						<a href="#!/prodavnica" data-hover="Prodavnica">Prodavnica</a>
+						<ul>
+							<li ng-repeat="category in $ctrl.categories">
+								<a href="#!/prodavnica/{{category.id}}" data-hover="{{category.name}}">{{category.name}}</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#!/sibirski_limun" data-hover="Sibirski limun">Sibirski limun</a>
+					</li>
+					<li>
+						<a href="#!/paulovnija" data-hover="Paulovnija">Paulovnija</a>
+					</li>
+					<li class="ek-active">
+						<a href="#!/galanterija" data-hover="Galanterija">Galanterija</a>
+					</li>
+					<li>
+						<a href="#!/kontakt" data-hover="Kontakt">Kontakt</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+
+	<content>
+		<div class="container mt25">
+			<h1 style="margin:10px 0;">USKORO</h1>
+			
+			<div class="content">
+			    <ng-gallery images="$ctrl.images"></ng-gallery>
+			</div>
+
+		</div><!-- end container-->
+	</content>
+
+	<footer>
+		<div class="container">
+			<div class="ek-footer_plant"></div>
+			<div class="ek-footer_info">
+				<h2>Informacije o prodavnici</h2>
+				<p><i class="fa fa-map-marker" aria-hidden="true"></i> Eko Plan, Barska 30 16000 Leskovac</p>
+				<p><i class="fa fa-mobile" aria-hidden="true"></i></i> 0640163030 -dipl.ing. zžs Marko Milošević <br>0606177778 - Milan Milošević</p>
+				<p><i class="fa fa-envelope" aria-hidden="true"></i> office@rasadnikekoplan.com </p>
+			</div>
+			<div class="ek-social_div">
+				<a href="https://www.facebook.com/sadnice.belebreze/" class="ek-fb" target="_blank">
+					<span class="fa fa-facebook"></span>
+				</a>
+				<a href="mailto:office@rasadnikekoplan.com?Subject=Poruka%20sa%20sajta" class="ek-mail">
+					<span class="fa fa-envelope"></span>
+				</a>					
+			</div>
+		</div>
+	</footer>

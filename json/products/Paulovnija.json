@@ -1,0 +1,15 @@
+
+    {
+        "categoryName": "Lišćari",
+        "id": "Paulovnija", 
+        "images": [
+            "assets/img/proizvodi/paulovnija.jpg", 
+            "assets/img/proizvodi/bela_jagoda.jpg", 
+            "assets/img/proizvodi/beli_bor.jpg"
+        ],
+        "name": "Paulovnija",
+        "price": 650,
+        "stock": true,
+        "firstPage": true,
+        "description": "Introducing Dell\u2122 Streak 7. Share photos, videos and movies together. It\u2019s small enough to carry around, big enough to gather around."
+    }

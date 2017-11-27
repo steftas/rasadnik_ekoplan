@@ -1,0 +1,22 @@
+<div class="ek-admin_login_div">
+   	<h1 style="margin:10px 0;">EKO-PLAN</h1>
+    <form method="" action="">
+      <div class="form-group">
+        <label for="username">Korisničko ime*</label>
+        <input type="text" class="form-control" id="username" placeholder="Korisničko ime"  ng-model="state.username"/>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Lozinka*</label>
+        <input type="password" class="form-control" id="password" placeholder="Lozinka" ng-model="state.password" />
+      </div>
+
+      <!-- <div class="ek-checkout_button">
+         <button type="submit" class="ek-cart_pay" onclick="location.href='#!/admin_porudzbine';" >LOGIN</button>
+      </div> -->
+
+      <div class="ek-checkout_button">
+         <button type="submit" class="ek-cart_pay" ng-click="login()">LOGIN</button>
+      </div>
+    </form>            
+</div>

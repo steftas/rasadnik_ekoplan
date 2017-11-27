@@ -1,0 +1,14 @@
+{   
+    "categoryName": "Voće",
+    "id": "Bela_jagoda",
+    "images": [
+        "assets/img/proizvodi/bela_jagoda.jpg", 
+        "assets/img/proizvodi/beli_bor.jpg", 
+        "assets/img/proizvodi/paulovnija.jpg"
+    ],
+    "name": "Bela jagoda",
+    "price": 300,
+    "stock": true,
+    "firstPage": true,
+    "description": "The Next, Next Generation\r\n\r\nExperience the future with Motorola XOOM with Wi-Fi, the world's first tablet powered by Android 3.0 (Honeycomb)."
+}

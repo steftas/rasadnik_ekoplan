@@ -1,0 +1,223 @@
+	<div class="ep-spinner_div" data-loading >
+		<div class="ep-spinner">
+			<img src="assets/img/loader.gif"/>
+		</div>
+	</div>
+	<header>
+		<div class="ek-slider">
+			<div class="ek-logo_div">
+				<div class="ek-logo"></div>
+			</div>		
+		</div>
+
+		<nav>
+			<div class="container .txt_center">
+				<span class="fa fa-bars" id="ek-res_menu" ng-click="showMenu = !showMenu"></span>
+				<span id="ek-res_logo">EKO-PLAN</span>
+				<span class="fa fa fa-shopping-cart" id="ek-res_cart" ng-click="showCart = !showCart"></span>
+				<ul class="ek-menu" ng-class="{true: 'showMenu'}[showMenu]">
+					<li class="ek-active">
+						<a href="#!/" data-hover="Početna">Početna</a>
+					</li>
+					<li>
+						<a href="#!/prodavnica" data-hover="Prodavnica">Prodavnica</a>
+						<ul>
+							<li ng-repeat="category in $ctrl.categories">
+								<a href="#!/prodavnica/{{category.name}}" data-hover="{{category.name}}">{{category.name}}</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#!/sibirski_limun" data-hover="Sibirski limun">Sibirski limun</a>
+					</li>
+					<li>
+						<a href="#!/paulovnija" data-hover="Paulovnija">Paulovnija</a>
+					</li>
+					<li>
+						<a href="#!/galanterija" data-hover="Galanterija">Galanterija</a>
+					</li>
+					<li>
+						<a href="#!/kontakt" data-hover="Kontakt">Kontakt</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+
+	<content>
+		<div class="container mt25">
+			<div id="carousel-example-generic" class="carousel slide ek-home_slider" data-ride="carousel">
+			  	<!-- Indicators -->
+			  	<ol class="carousel-indicators">
+				    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+				    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+				    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+				    <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+			  	</ol>
+
+			  	<!-- Wrapper for slides -->
+			  	<div class="carousel-inner" role="listbox">
+				    <div class="item active">
+				      <img src="assets/img/carousel/ca0.jpg" alt="Image 1">
+				      <div class="carousel-caption"></div>
+				    </div>
+				    <div class="item">
+				      <img src="assets/img/carousel/ca1.jpg" alt="Image 2">
+				      <div class="carousel-caption"></div>
+				    </div>
+				    <div class="item">
+				      <img src="assets/img/carousel/ca2.jpg" alt="Image 3">
+				      <div class="carousel-caption"></div>
+				    </div>
+				    <div class="item">
+				      <img src="assets/img/carousel/ca3.jpg" alt="Image 4">
+				      <div class="carousel-caption"></div>
+				    </div>
+			   	</div>
+
+			  	<!-- Controls -->
+			  	<a class="left carousel-control" href=".ek-home_slider" role="button" data-slide="prev">
+				    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				    <span class="sr-only">Previous</span>
+			  	</a>
+			  	<a class="right carousel-control" href=".ek-home_slider" role="button" data-slide="next">
+			    	<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			    	<span class="sr-only">Next</span>
+			  	</a>
+			</div>
+
+			<div class="row ek-category">
+				<div class="col-md-4 col-sm-8 col-sm-centered" ng-repeat="category in $ctrl.categories | filter: {firstPage: true}">
+					<div class="ek-cat" style="background-image: url({{category.imageUrl}})">
+						<a href="#!/prodavnica/{{category.name}}">
+							<span>{{category.name}}</span>
+							<i class="fa fa-caret-right" aria-hidden="true"></i>
+						</a>
+					</div><!-- end ek-cat-->
+				</div><!-- end col-sm-4-->
+			</div><!-- end ek-category-->
+
+			<div class="row">
+				<h1>EKO-PLAN</h1>
+
+				<div class="col-sm-6">
+					<div class="ek-text">
+						<h3>Šta je rasadnik eko-plan i čime se bavi?</h3>
+						Rasadnik "EKO-PLAN" postoji 6 godina i bavi se proizvodnjom i prodajom egzotičnih i retkih biljka na našem tržištu. Pored egzotičnih biljaka u našoj ponudu možete naći i standardne lišćare i četinare kao i domaće voćne sorte. <br> Rasadnik "EKO PLAN" potencira pre svega biljke koje su nemodifikovane i potiču iz rasadničke proizvodnje. Svakim danom rastemo i uvećavamo svoju proizvodnju i naše kupce izenanađujemo novim biljnim vrstama.
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="ek-text">
+						<h3>Gde se nalazi Rasadnik "EKO-PLAN"?</h3>
+						Proizvodnja rasadnika "EKO-PLAN" smeštena je na 926 m.n.v. u selu Crveni Breg kod Predejana na imanju od 4ha na poljoprivrednom gazdinstvu osnovanom jos 1886 godine, polj. gazdinstvo je registrovano kao komercijalno polj. gazdinstvo 2009 godine i od tad se bavi rasadničkom proizvodnjom. Naša prodaja se nalazi u Leskovcu.
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="ek-text">
+						<h3>Kako možete kupiti sadnice od nas?</h3>
+						- online klikom na prodavnicu biljka, <br>
+						- isporuka na tertoriji cele Srbije uskoro i na sve bivše Jugoslovenske republike<br>
+						- pozivom na brojeve telefona 0640163030 (Marko) ili 0606177778 (Milan)<br>
+						- sadnice možete preuzeti i licno kod nas u Leskovcu.
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="ek-text">
+						<h3>Šta vam sve rasadnik "EKO-Plan" nudi?</h3>
+						- isporuka kvalitetnog rasada na vašu adresu (teritorija cele Srbije),<br>
+						- kompletno uredjenje vaše bašte,<br>
+						- stučni savet u bilo koje doba ukoliko kupite sadnice od nas,<br>
+						- nakon konsultacija sa Vama pristupamo izradi idejnog rešenja za uređenje pejzaža.<br>
+						- Postignuto idejno rešenje, uz stručan nadzor, prenosimo na teren. Vrši se odabir kvalitetnog sadnog materijala koji se dalje ugrađuje na željenu površinu.<br>
+						- Pejzažno projektovanje vašeg prostora u programu 3D max studio<br>
+						- Uskoro izrada  etno galanterije, letnjikovca i brvnara.
+
+					</div>
+				</div>
+			</div><!-- end row-->
+
+			<div class="row row-xs-centered">
+				<h1>Izdvajamo iz ponude</h1>
+
+				<div class="col-md-8 col-sm-12 plr0">
+					<div class="col-sm-4 col-xs-8 col-xs-centered minHeight450" ng-repeat="product in $ctrl.products | filter: {firstPage: true}">
+						<div class="ek-item">
+							<a href="#!/prodavnica/proizvod/{{product.id}}">
+								<div class="ek-item_img_div">
+									<img ng-src="{{product.images[0]}}" class="ek-item_img">
+								</div>
+								<div class="ek-item_data">
+									<p class="ek-item_price">{{product.price}},00 RSD</p>
+									<p class="ek-item_name">{{product.name}}</p>
+								</div>
+							</a>
+							<button ng-class="{true:'ek-add_button', false:'ek-stock_out'}[product.stock]" ng-click="cart.addItem(product.id, product.name, product.price, 1)" ng-disabled="product.stock == 'false'"></button>
+						</div><!-- end ek-item-->					
+					</div><!-- end col-sm-4-->
+				</div><!-- end col-sm-8-->
+
+				<div class="col-md-4 col-sm-12" ng-class="{true: 'showCart'}[showCart]">
+					<div class="ek-cart_div">
+						<div class="ek-cart_header">
+							<div class="col-xs-6">
+								<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+								<span>KORPA</span>
+							</div>
+							<div class="col-xs-6">
+								<span>{{cart.getTotalCount()}} proizvod(a)</span>
+							</div>			
+						</div>
+						<div class="ek-cart_body" ng-class="{true:'ek-none', false:'ek-cart_body'}[cart.getTotalCount() == 0]">
+							<p ng-repeat="item in cart.items">
+								{{item.quantity}} x {{item.name}} <span>{{item.price * item.quantity}},00 RSD</span>
+					            <a ng-click="cart.addItem(item.id, item.name, item.price, -10000000)" class="ek-cart_remove">
+					            	<i class="fa fa-times" aria-hidden="true"></i>
+					            </a>
+					        </p>
+							<p class="ek-cart_delivery">Isporuka <span>280,00 RSD</span></p>
+							<p class="ek-cart_allprice">UKUPNO <span>{{cart.getTotalPrice()}},00 RSD</span></p>
+							<button class="ek-cart_pay" onclick="location.href='#!/checkout';" ng-disabled="cart.getTotalCount() < 1">Naruči</button>
+						</div>
+
+						<div ng-class="{true:'ek-cart_body', false:'ek-none'}[cart.getTotalCount() == 0]">
+							<p>Vaša korpa je prazna</p>
+						</div>
+					</div><!-- end ek-cart_div-->
+				</div><!-- end col-sm-4-->
+			</div><!-- end row-->
+
+		</div><!-- end container-->
+	</content>
+
+	<footer>
+		<div class="container">
+			<div class="ek-footer_plant"></div>
+			<div class="ek-footer_info">
+				<h2>Informacije o prodavnici</h2>
+				<p><i class="fa fa-map-marker" aria-hidden="true"></i> Eko Plan, Barska 30 16000 Leskovac</p>
+				<p><i class="fa fa-mobile" aria-hidden="true"></i></i> 0640163030 -dipl.ing. zžs Marko Milošević <br>0606177778 - Milan Milošević</p>
+				<p><i class="fa fa-envelope" aria-hidden="true"></i> office@rasadnikekoplan.com </p>
+			</div>
+			<div class="ek-social_div">
+				<a href="https://www.facebook.com/sadnice.belebreze/" class="ek-fb" target="_blank">
+					<span class="fa fa-facebook"></span>
+				</a>
+				<a href="mailto:office@rasadnikekoplan.com?Subject=Poruka%20sa%20sajta" class="ek-mail">
+					<span class="fa fa-envelope"></span>
+				</a>					
+			</div>
+		</div>
+	</footer>
+
+	<div class="modal fade" tabindex="-1" role="dialog" id="ek-modal">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-body">
+	        <p class="txt_center">Uspešno ste dodali proizvod u korpu.</p>
+	      </div>
+	      <div class="modal-footer" style="text-align:center;">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Potvrdi</button>
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->

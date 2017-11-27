@@ -1,0 +1,217 @@
+	<div class="ep-spinner_div" data-loading >
+		<div class="ep-spinner">
+			<img src="assets/img/loader.gif"/>
+		</div>
+	</div>
+	<header>
+		<div class="ek-slider">
+			<div class="ek-logo_div">
+				<div class="ek-logo"></div>
+			</div>		
+		</div>
+
+		<nav>
+			<div class="container">
+				<span class="fa fa-bars" id="ek-res_menu" ng-click="showMenu = !showMenu"></span>
+				<span id="ek-res_logo">EKO-PLAN</span>
+				<span class="fa fa fa-shopping-cart" id="ek-res_cart" ng-click="showCart = !showCart"></span>
+				<ul class="ek-menu" ng-class="{true: 'showMenu'}[showMenu]">
+					<li>
+						<a href="#!/" data-hover="Početna">Početna</a>
+					</li>
+					<li class="ek-active">
+						<a href="#!/prodavnica" data-hover="Prodavnica">Prodavnica</a>
+						<ul>
+							<li ng-repeat="category in $ctrl.categories">
+								<a href="#!/prodavnica/{{category.name}}" data-hover="{{category.name}}">{{category.name}}</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#!/sibirski_limun" data-hover="Sibirski limun">Sibirski limun</a>
+					</li>
+					<li>
+						<a href="#!/paulovnija" data-hover="Paulovnija">Paulovnija</a>
+					</li>
+					<li>
+						<a href="#!/galanterija" data-hover="Galanterija">Galanterija</a>
+					</li>
+					<li>
+						<a href="#!/kontakt" data-hover="Kontakt">Kontakt</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+
+	<content>
+		<div class="container">
+			<div class="ek-category_info row">
+				<div class="ek-site_map">
+					Eko-plan > <span>Prodavnica</span>
+				</div>
+				<div class="ek-shop_txt">
+					<p class="txt_center">* Isporuka sadnica na teritoriji cele Srbije * Plaćanje po uzećem * Poštarina samo 280 RSD *</p>
+				</div>
+				<div class="ek-product_search_div">
+					<input type="text" name="product_search" placeholder="Pretraga proizvoda" ng-model="$ctrl.query">
+					<span class="fa fa-search" aria-hidden="true"></span>
+				</div>
+			</div><!-- end category info-->
+			
+			
+			
+
+			<div class="row row-xs-centered">
+				<h1>Proizvodi</h1>
+				<div class="ek-product_info">
+					<div class="ek-product_data pull-left">
+						Ukupno {{($ctrl.products | filter: product.categoryName = $ctrl.category.name).length}} proizvoda
+					</div>
+					<div class="ek-product_sort pull-right">
+						<span>Sortiraj po:</span>
+						<select ng-model="$ctrl.orderProp">
+							<option value="name">Nazivu</option>
+							<option value="price">Ceni</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="col-md-8 col-sm-12 plr0">
+					<div class="col-sm-4 col-xs-8 col-xs-centered minHeight450" ng-repeat="product in $ctrl.products | filter:$ctrl.query | orderBy:$ctrl.orderProp | startFrom:$ctrl.currentPage*$ctrl.pageSize | limitTo:$ctrl.pageSize">
+						<div class="ek-item">
+							<a href="#!/prodavnica/proizvod/{{product.id}}">
+								<div class="ek-item_img_div">
+									<img ng-src="{{product.images[0]}}" class="ek-item_img">
+								</div>
+								<div class="ek-item_data">
+									<p class="ek-item_price">{{product.price}},00 RSD</p>
+									<p class="ek-item_name">{{product.name}}</p>									
+								</div>
+							</a>
+							<button ng-class="{true:'ek-add_button', false:'ek-stock_out'}[product.stock]" ng-click="cart.addItem(product.id, product.name, product.price, 1)" ng-disabled="product.stock == 'false'"></button>
+						</div><!-- end ek-item-->						
+					</div><!-- end col-sm-4-->
+
+					<div class="ek-pagination_div">
+						<button ng-disabled="$ctrl.currentPage == 0" ng-click="$ctrl.currentPage=$ctrl.currentPage-1; $ctrl.displayProductsFrom=$ctrl.displayProductsFrom-$ctrl.pageSize; $ctrl.productsToMin();">
+							<i class="fa fa-chevron-left" aria-hidden="true"></i>
+						</button>
+				    	<span>{{$ctrl.currentPage+1}}</span> od <span>{{$ctrl.numberOfPages()}}</span>
+				    	<button ng-disabled="$ctrl.currentPage >= $ctrl.products.length/$ctrl.pageSize - 1" ng-click="$ctrl.currentPage=$ctrl.currentPage+1; $ctrl.displayProductsFrom=$ctrl.displayProductsFrom+$ctrl.pageSize; $ctrl.productsTo();">
+				    		<i class="fa fa-chevron-right" aria-hidden="true"></i>
+				    	</button>
+					</div>
+				</div><!-- end col-md-8-->
+
+				<div class="col-md-4 col-sm-12">
+					<div class="ek-cart_div">
+						<div class="ek-cart_header">
+							<div class="col-xs-6">
+								<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+								<span>KORPA</span>
+							</div>
+							<div class="col-xs-6">
+								<span>{{cart.getTotalCount()}} proizvod(a)</span>
+							</div>			
+						</div>
+						<div class="ek-cart_body" ng-class="{true:'ek-none', false:'ek-cart_body'}[cart.getTotalCount() == 0]">
+							<p ng-repeat="item in cart.items">
+								{{item.quantity}} x {{item.name}} <span>{{item.price * item.quantity}},00 RSD</span>
+					            <a ng-click="cart.addItem(item.id, item.name, item.price, -10000000)" class="ek-cart_remove">
+					            	<i class="fa fa-times" aria-hidden="true"></i>
+					            </a>
+					        </p>
+							<p class="ek-cart_delivery">Isporuka <span>280,00 RSD</span></p>
+							<p class="ek-cart_allprice">UKUPNO <span>{{cart.getTotalPrice()}},00 RSD</span></p>
+							<button class="ek-cart_pay" onclick="location.href='#!/checkout';" ng-disabled="cart.getTotalCount() < 1">Naruči</button>
+						</div>
+
+						<div ng-class="{true:'ek-cart_body', false:'ek-none'}[cart.getTotalCount() == 0]">
+							<p>Vaša korpa je prazna</p>
+						</div>
+					</div><!-- end ek-cart_div-->
+
+					<div class="ek-category">
+						<h3>Kategorije</h3>
+						<div class="col-xs-12 ek-shop" ng-repeat="category in $ctrl.categories">
+							<div class="ek-cat" style="background-image: url({{category.imageUrl}})">
+								<a href="#!/prodavnica/{{category.name}}">
+									<span>{{category.name}}</span>
+									<i class="fa fa-caret-right" aria-hidden="true"></i>
+								</a>
+							</div><!-- end ek-cat-->
+						</div><!-- end col-sm-4-->
+					</div><!-- end ek-category-->
+
+					<div class="ek-category_footer">
+						<div class="col-sm-12 plr0">
+							<div class="ek-contact_info">
+								<address>
+									<i>Proizvodnja:</i><br>
+									Crveni breg bb<br>
+									16222 Predejane<br>
+									<i>Prodaja:</i><br>
+									Barska 30<br>
+									16000 Leskovac
+								</address>
+
+								<p>
+									<i>Pozovite nas sada:</i><br>
+									dipl.ing. zžs Marko Milošević<br>
+									0640163030<br>
+									Milan Milošević<br>
+									0606177778
+								</p>
+								<p>
+									<i>Radno vreme:</i><br>
+									Ponedeljak - Petak:	06h - 20h<br>
+									Subota:	06h - 15h
+								</p>
+							</div>
+						</div>
+
+						<div class="col-sm-12 plr0">
+							<iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fsadnice.belebreze%2F&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" style="border:none;overflow:hidden;width:100%;max-width:360px;height:auto;min-height:390px;" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+						</div>
+					</div>
+				</div><!-- end col-md-4-->					
+			</div><!-- end row-->
+
+		</div><!-- end container-->
+	</content>
+
+	
+
+	<footer>
+		<div class="container">
+			<div class="ek-footer_plant"></div>
+			<div class="ek-footer_info">
+				<h2>Informacije o prodavnici</h2>
+				<p><i class="fa fa-map-marker" aria-hidden="true"></i> Eko Plan, Barska 30 16000 Leskovac</p>
+				<p><i class="fa fa-mobile" aria-hidden="true"></i></i> 0640163030 -dipl.ing. zžs Marko Milošević <br>0606177778 - Milan Milošević</p>
+				<p><i class="fa fa-envelope" aria-hidden="true"></i> office@rasadnikekoplan.com </p>
+			</div>
+			<div class="ek-social_div">
+				<a href="https://www.facebook.com/sadnice.belebreze/" class="ek-fb" target="_blank">
+					<span class="fa fa-facebook"></span>
+				</a>
+				<a href="mailto:office@rasadnikekoplan.com?Subject=Poruka%20sa%20sajta" class="ek-mail">
+					<span class="fa fa-envelope"></span>
+				</a>					
+			</div>
+		</div>
+	</footer>
+	
+	<div class="modal fade" tabindex="-1" role="dialog" id="ek-modal">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-body">
+	        <p class="txt_center">Uspešno ste dodali proizvod u korpu.</p>
+	      </div>
+	      <div class="modal-footer" style="text-align:center;">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Potvrdi</button>
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->

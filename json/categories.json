@@ -1,0 +1,44 @@
+[
+    {   
+        "age": 0,
+        "id": "Voce", 
+        "imageUrl": "assets/img/kategorije/c1.jpg", 
+        "firstPage": true,
+        "name": "VOĆE"
+    }, 
+    {   
+        "age": 1,
+        "id": "Liscari", 
+        "imageUrl": "assets/img/kategorije/c2.jpg", 
+        "firstPage": true,
+        "name": "Lišćari"
+    },
+    {
+        "age": 2,
+        "id": "Cetinari", 
+        "imageUrl": "assets/img/kategorije/c3.jpg", 
+        "firstPage": true,
+        "name": "Četinari"
+    },
+    {   
+        "age": 3,
+        "id": "Trave", 
+        "imageUrl": "assets/img/kategorije/c1.jpg", 
+        "firstPage": false,
+        "name": "Ukrasne trave"
+    },
+    {   
+        "age": 4,
+        "id": "Perene", 
+        "imageUrl": "assets/img/kategorije/c2.jpg", 
+        "firstPage": false,
+        "name": "Perene"
+    },
+    {   
+        "age": 5,
+        "id": "Ruze", 
+        "imageUrl": "assets/img/kategorije/c3.jpg", 
+        "firstPage": false,
+        "name": "Ruže"
+    }
+]

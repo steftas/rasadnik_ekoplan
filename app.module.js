@@ -1,0 +1,17 @@
+angular.module("eko-plan", [
+	'ngRoute',
+	'contactPage',
+	'shopPage',
+	'categoryPage',
+	'productPage',
+	'checkoutPage',
+	'galantPage',
+	'limunPage',
+	'paulovnijaPage',
+	'successPage',
+	'indexPage',
+	'adminPage',
+	'adminOrders',
+	'adminProducts',
+	'adminCategories',
+]);

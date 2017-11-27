@@ -1,0 +1,189 @@
+<div class="ep-spinner_div" data-loading >
+    <div class="ep-spinner">
+      <img src="assets/img/loader.gif"/>
+    </div>
+  </div>
+<header>
+    <div class="ek-slider">
+      <div class="ek-logo_div">
+        <div class="ek-logo"></div>
+      </div>    
+    </div>
+
+    <nav>
+      <div class="container">
+        <span class="fa fa-bars" id="ek-res_menu" ng-click="showMenu = !showMenu"></span>
+        <span id="ek-res_logo">EKO-PLAN</span>
+        <ul class="ek-menu" ng-class="{true: 'showMenu'}[showMenu]">
+          <li>
+            <a href="#!/" data-hover="Početna">Početna</a>
+          </li>
+          <li class="ek-active">
+            <a href="#!/prodavnica" data-hover="Prodavnica">Prodavnica</a>
+            <ul>
+              <li ng-repeat="category in $ctrl.categories">
+                <a href="#!/prodavnica/{{category.id}}" data-hover="{{category.name}}">{{category.name}}</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#!/sibirski_limun" data-hover="Sibirski limun">Sibirski limun</a>
+          </li>
+          <li>
+            <a href="#!/paulovnija" data-hover="Paulovnija">Paulovnija</a>
+          </li>
+          <li>
+            <a href="#!/galanterija" data-hover="Galanterija">Galanterija</a>
+          </li>
+          <li>
+            <a href="#!/kontakt" data-hover="Kontakt">Kontakt</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <content>
+    <div class="container mt25">
+      <div class="row plr15">
+        <h1 style="margin:10px 0;">
+          <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+          KORPA
+        </h1>
+
+        <table class="table table-hover ek-checkout_table">
+          <thead>
+            <th>Naziv</th>
+            <th>Cena proizvoda</th>
+            <th>Količina</th>
+            <th>Cena</th>
+            <th></th>
+          </thead>
+
+          <tbody>
+            <tr ng-repeat="item in cart.items">
+              <td>{{item.name}}</td>
+              <td>{{item.price}},00 RSD</td>
+              <td>{{item.quantity}}</td>
+              <td>{{item.price * item.quantity}},00 RSD</td>
+              <td>
+                <a href="" ng-click="cart.addItem(item.id, item.name, item.price, -10000000)" class="ek-cart_remove">
+                  <i class="fa fa-times" aria-hidden="true"></i>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+
+          <tfoot>
+            <tr>
+              <td colspan="2"></td>
+              <td>ISPORUKA</td>
+              <td>280,00 RSD</td>
+            </tr>
+            <tr>
+              <td colspan="2"></td>
+              <td>UKUPNO</td>
+              <td>{{cart.getTotalPrice()}},00 RSD</td>
+            </tr>
+          </tfoot>
+        </table>
+
+        <div class="row">
+          <div class="col-sm-6">
+            <h2 class="txt_center">Informacije o kupcu</h2>
+            <form id="cust_info_form">
+              <div class="form-group">
+                <label for="cust_fname">Ime*</label>
+                <input type="text" class="form-control" id="cust_fname" placeholder="Ime" ng-model="customer.name" required />
+              </div>
+
+              <div class="form-group">
+                <label for="cust_lname">Prezime*</label>
+                <input type="text" class="form-control" id="cust_lname" placeholder="Prezime" ng-model="customer.lastname" required />
+              </div>
+
+              <div class="form-group">
+                <label for="cust_adress">Adresa*</label>
+                <input type="text" class="form-control" id="cust_adress" placeholder="Adresa" ng-model="customer.address" required />
+              </div>
+
+              <div class="form-group">
+                <label for="cust_post">Poštanski broj*</label>
+                <input type="text" class="form-control" id="cust_post" placeholder="Poštanski broj" ng-model="customer.zip" required />
+              </div>
+
+              <div class="form-group">
+                <label for="cust_city">Grad*</label>
+                <input type="text" class="form-control" id="cust_city" placeholder="Grad" ng-model="customer.city" required />
+              </div>
+
+              <div class="form-group">
+                <label for="cust_phone">Kontakt telefon*</label>
+                <input type="tel" class="form-control" id="cust_phone" placeholder="Kontakt telefon" ng-model="customer.phone" required />
+              </div>
+
+              <div class="form-group">
+                <label for="cust_email">Email*</label>
+                <input type="email" class="form-control" id="cust_email" placeholder="Email" ng-model="customer.email" required />
+              </div>              
+            </form>            
+          </div><!-- end col-sm-6--> 
+
+          <div class="col-sm-6 ek-checkout_info">
+            <div>
+              <label>Način isporuke:</label>
+              <span>Dostava brzom poštom</span>
+            </div>
+
+            <div>
+              <label>Način plaćanja:</label>
+              <span>Plaćanje pouzećem</span>
+            </div>
+
+            <div class="ek-checkout_img"></div>
+          </div><!-- end col-sm-6--> 
+
+          <div class="ek-checkout_button">
+            <button class="ek-cart_pay" form="cust_info_form" ng-click="naruci()">NARUČI</button>
+          </div>
+          
+
+        </div><!-- end row-->       
+
+      </div><!-- end row-->
+
+    </div><!-- end container-->
+  </content>
+
+  <footer>
+    <div class="container">
+      <div class="ek-footer_plant"></div>
+      <div class="ek-footer_info">
+        <h2>Informacije o prodavnici</h2>
+        <p><i class="fa fa-map-marker" aria-hidden="true"></i> Eko Plan, Barska 30 16000 Leskovac</p>
+        <p><i class="fa fa-mobile" aria-hidden="true"></i></i> 0640163030 -dipl.ing. zžs Marko Milošević <br>0606177778 - Milan Milošević</p>
+        <p><i class="fa fa-envelope" aria-hidden="true"></i> office@rasadnikekoplan.com </p>
+      </div>
+      <div class="ek-social_div">
+        <a href="https://www.facebook.com/sadnice.belebreze/" class="ek-fb" target="_blank">
+          <span class="fa fa-facebook"></span>
+        </a>
+        <a href="mailto:office@rasadnikekoplan.com?Subject=Poruka%20sa%20sajta" class="ek-mail">
+          <span class="fa fa-envelope"></span>
+        </a>          
+      </div>
+    </div>
+  </footer>
+
+  <div class="modal fade" tabindex="-1" role="dialog" id="ek-modal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <p class="txt_center">Uspešno ste narucili vaše sadnice, vaš paket bice poslat u nakracem mogucem roku ! <br>Telefon za dodatna pitanja 0640163030, vaš RASADNIK EKO-PLAN</p>
+        </div>
+        <div class="modal-footer" style="text-align:center;">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Potvrdi</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->

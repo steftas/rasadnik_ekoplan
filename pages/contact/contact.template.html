@@ -1,0 +1,132 @@
+<header>
+		<div class="ek-slider">
+			<div class="ek-logo_div">
+				<div class="ek-logo"></div>
+			</div>		
+		</div>
+
+		<nav>
+			<div class="container">
+				<span class="fa fa-bars" id="ek-res_menu" ng-click="showMenu = !showMenu"></span>
+				<span id="ek-res_logo">EKO-PLAN</span>
+				<ul class="ek-menu" ng-class="{true: 'showMenu'}[showMenu]">
+					<li>
+						<a href="#!/" data-hover="Početna">Početna</a>
+					</li>
+					<li>
+						<a href="#!/prodavnica" data-hover="Prodavnica">Prodavnica</a>
+					</li>
+					<li>
+						<a href="#!/sibirski_limun" data-hover="Sibirski limun">Sibirski limun</a>
+					</li>
+					<li>
+						<a href="#!/paulovnija" data-hover="Paulovnija">Paulovnija</a>
+					</li>
+					<li>
+						<a href="#!/galanterija" data-hover="Galanterija">Galanterija</a>
+					</li>
+					<li class="ek-active">
+						<a href="#!/kontakt" data-hover="Kontakt">Kontakt</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+
+	<content>
+		<div class="container">
+			<div class="row">
+				<h1 style="margin:10px 0;">EKO-PLAN</h1>
+
+				<div class="ek-contact_div">
+					<div class="col-sm-4 ek-contact_info">
+						<h3>EKO-PLAN</h3>
+						<address>
+							<i>Proizvodnja:</i><br>
+							Crveni breg bb<br>
+							16222 Predejane<br>
+							<i>Prodaja:</i><br>
+							Barska 30<br>
+							16000 Leskovac
+						</address>
+
+						<p>
+							<i>Pozovite nas sada:</i><br>
+							dipl.ing. zžs Marko Milošević<br>
+							0640163030<br>
+							Milan Milošević<br>
+							0606177778
+						</p>
+						<p>
+							<i>Radno vreme:</i><br>
+							Ponedeljak - Petak:	06h - 20h<br>
+							Subota:	06h - 15h
+						</p>
+					</div>
+
+					<div class="col-sm-8">
+						<form method="post" action="http://rasadnikekoplan.com/ekoPlanAPI/Orders/sendMailContact" autocomplete="off" class="col-xs-9 ek-contact_form">
+							<div class="form-group">
+								<label for="name">Ime<span>*</span></label>
+    							<input type="text" class="" id="name" placeholder="Ime" name="name" required="">
+							</div>
+							<div class="form-group">
+								<label for="email">E-mail<span>*</span></label>
+    							<input type="email" class="" id="email" placeholder="E-mail" name="email" required="">
+							</div>
+							<div class="form-group">
+								<label for="poruka">Tekst poruke<span>*</span></label>
+    							<textarea class="" name="message" id="poruka" rows="4" placeholder="Poruka"></textarea>
+							</div>
+							<button type="submit" name="submit" class="ek-cart_pay">Pošalji</button>
+						</form>	
+						<div class="col-xs-3">
+							<div class="ek-contact_butterfly"></div>
+						</div>					
+					</div>
+				</div>
+				
+			</div><!-- end row-->
+
+		</div><!-- end container-->
+
+		<div class="ek-map">
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5835.938854610388!2d21.97218417831873!3d42.99997831318518!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475577e52669c0ed%3A0xad4375ec8c3bd2d0!2sAnciki!5e0!3m2!1sen!2srs!4v1471351116107" frameborder="0" style="border:0; width:100%; height: 500px; " allowfullscreen></iframe>
+		</div><!-- end ek-map-->
+	</content>
+
+	<footer>
+		<div class="container">
+			<div class="ek-footer_plant"></div>
+			<div class="ek-footer_info">
+				<h2>Informacije o prodavnici</h2>
+				<p><i class="fa fa-map-marker" aria-hidden="true"></i> Eko Plan, Barska 3 16000 Leskovac</p>
+				<p><i class="fa fa-mobile" aria-hidden="true"></i></i> 0640163030 -dipl.ing. zžs Marko Milošević <br>0606177778 - Milan Milošević</p>
+				<p><i class="fa fa-envelope" aria-hidden="true"></i> office@rasadnikekoplan.com </p>
+			</div>
+			<div class="ek-social_div">
+				<a href="https://www.facebook.com/sadnice.belebreze/" class="ek-fb" target="_blank">
+					<span class="fa fa-facebook"></span>
+				</a>
+				<a href="mailto:office@rasadnikekoplan.com?Subject=Poruka%20sa%20sajta" class="ek-mail">
+					<span class="fa fa-envelope"></span>
+				</a>					
+			</div>
+		</div>
+	</footer>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('.ek-cart_header').click(function() {
+				$('.ek-cart_body').toggle(700);
+			});
+
+			$('.ek-map').click(function () {
+			    $('.ek-map iframe').css("pointer-events", "auto");
+			});
+
+			$( '.ek-map' ).mouseleave(function() {
+			  $('.ek-map iframe').css("pointer-events", "none"); 
+			});
+		});
+	</script>

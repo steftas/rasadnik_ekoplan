@@ -1,0 +1,173 @@
+<div class="ek-admin_header">
+  <div class="ek-logo"></div>
+  <div class="ek-admin_user_info">
+    <i class="fa fa-user" aria-hidden="true"></i><br>
+    <span>Marko Milosevic</span><br>
+    <a href="#!/ekoplan_adminPanel" class="ek-cart_pay">LOGOUT</a>
+  </div>
+</div>
+<div class="ek-admin_side_nav">
+  <ul>
+    <li class="mt0">
+      <a href="#!/admin_porudzbine">Porudžbine</a>
+      <span class="ek-admin_notification">{{($ctrl.orders | filter: {seen: false}).length}}</span>
+    </li>
+    <li>
+      <a href="#!/admin_kategorije">Kategorije</a>
+    </li>
+    <li class="ek-active">
+      <a href="#!/admin_proizvodi">Proizvodi</a>
+    </li>
+  </ul>
+</div>
+<content class="ek-admin_orders">
+  <h2>Proizvodi</h2>
+
+  <button class="ek-cart_pay" data-toggle="modal" data-target="#productModalADD">Dodaj novi proizvod</button>
+
+  <table class="table table-hover ek-checkout_table">
+      <thead>
+        <th>Ime</th>
+        <th>Slike</th>
+        <th>Cena</th>
+        <th>Opis</th>
+        <th>Kategorija</th>
+        <th>Stanje</th>
+        <th>Odabrane</th>
+        <th></th>
+      </thead>
+
+      <tbody>
+        <tr ng-repeat="product in products" class="ek-admin_categories">
+          <td>{{product.name}}</td>
+          <td>
+            <img ng-src="{{product.images[0]}}" />
+          </td>
+          <td>{{product.price}},00 RSD</td>
+          <td>{{product.description}}</td>
+          <td>{{product.categoryName}}</td>
+          <td><span ng-class="{true:'fa fa-check', false:'fa fa-times'}[product.stock]"></span></td>
+          <td><span ng-class="{true:'fa fa-check', false:'fa fa-times'}[product.firstPage]"></span></td>
+          <td style="width:5%;">
+            <a href="" ng-click="editProduct(product.id, product.name, product.price, product.description, product.stockDesc,  product.stock, product.firstPage, product.categoryName)" data-toggle="modal" data-target="#productModal">
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+            </a>
+            <a href="">
+              <i class="fa fa-remove" aria-hidden="true" ng-click="deleteProduct(product.id)"></i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+</content>
+
+<div class="modal fade" id="productModalADD" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Proizvodi</h4>
+      </div>
+      <div class="modal-body">
+        <form method="POST" action="http://rasadnikekoplan.com/ekoPlanAPI/Product/insertProductImage" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="prod_name">Ime proizvoda*</label>
+                <input type="text" class="form-control" name="name" id="prod_name" placeholder="Ime" required />
+            </div>
+            <div class="form-group">
+                <label for="prod_img">Slika proizvoda</label>
+                <input type="file" name="file[]" id="prod_img" multiple required/>
+            </div>
+            <div class="form-group">
+                <label for="prod_img">Kategorija</label><br>
+                <select name="categorySelect" name="category" ng-model="data.model" required>
+                  <option ng-repeat="option in categories" value="{{option.name}}">{{option.name}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="prod_price">Cena proizvoda*</label>
+                <input type="text" name="price" class="form-control" id="prod_price" placeholder="Cena" required />
+            </div>
+            <div class="form-group">
+                <label for="prod_desc">Opis proizvoda*</label>
+                <textarea name="description" class="form-control" id="prod_desc" placeholder="Opis" rows="8" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="prod_stock">Stanje</label>
+                <input type="checkbox" name="stock" ng-checked="check(stock)" id="prod_stock" ng-click="stanje = !stanje" />
+            </div>
+            <div class="form-group" ng-show="!stanje">
+                <label for="prod_desc">Od kada je na stanju</label>
+                <textarea name="stockDesc" class="form-control" id="prod_desc" placeholder="Od kada je na stanju" rows="4"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="prod_firstPage">Prva strana</label>
+                <input type="checkbox" name="firstPage" ng-checked="checkF(firstPage)" id="prod_firstPage" />
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="ek-cart_pay" data-dismiss="modal" style="float:left;background-color:#2d1604;">Zatvori</button>
+              <button type="submit" class="ek-cart_pay">Sačuvaj</button>
+            </div>
+        </form>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Proizvodi</h4>
+      </div>
+      <div class="modal-body">
+        <form method="POST" action="http://rasadnikekoplan.com/ekoPlanAPI/Product/updateProductImage" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="prod_name">Ime proizvoda*</label>
+                <input type="text" value="{{name}}" name="name" class="form-control" id="prod_name" placeholder="Ime" required />
+                <input type="hidden" value="{{id}}" ng-model="id" name="productID">
+            </div>
+            <div class="form-group">
+                <label for="prod_img">Slika proizvoda</label>
+                <input type="file" name="file[]" id="prod_img" multiple/>
+            </div>
+            <div class="form-group">
+                <label for="prod_img">Kategorija</label><br>
+                <select name="categorySelect" name="category" ng-model="data.model" required>
+                  <option ng-repeat="option in categories" value="{{option.name}}">{{option.name}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="prod_price">Cena proizvoda*</label>
+                <input type="text" name="price" value="{{price}}" class="form-control" id="prod_price" placeholder="Cena" required />
+            </div>
+            <div class="form-group">
+                <label for="prod_desc">Opis proizvoda*</label>
+                <textarea name="description" class="form-control" id="prod_desc" placeholder="Opis" rows="8" required>
+                  {{description}}
+                </textarea>
+            </div>
+            <div class="form-group">
+                <label for="prod_stock">Stanje</label>
+                <input type="checkbox" name="stock" value="{{stock}}" ng-checked="check(stock)" id="prod_stock" ng-click="stanje = !stanje" />
+            </div>
+            <div class="form-group" ng-show="stanje">
+                <label for="prod_desc">Od kada je na stanju</label>
+                <textarea name="stockDesc" class="form-control" id="prod_desc" placeholder="Od kada je na stanju" rows="4">{{stockDesc}}</textarea>
+            </div>
+            <div class="form-group">
+                <label for="prod_firstPage">Prva strana</label>
+                <input type="checkbox" name="firstPage" value="{{firstPage}}" ng-checked="checkF(firstPage)" id="prod_firstPage" />
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="ek-cart_pay" data-dismiss="modal" style="float:left;background-color:#2d1604;">Zatvori</button>
+              <button type="submit" class="ek-cart_pay">Sačuvaj</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
