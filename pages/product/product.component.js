@@ -39,8 +39,7 @@ angular.
           $scope.getProduct = function() {
             $scope.getProductsService(function(data) {
               $scope.products = data;
-              $scope.randomProd = data;
-              shuffleArray($scope.randomProd);
+              $scope.randomProd = shuffleArray($scope.products);
               for(var i = 0; i < data.length; i++) {
                 // console.log($scope.products[i]);
                 $scope.products[i]['images'] = [

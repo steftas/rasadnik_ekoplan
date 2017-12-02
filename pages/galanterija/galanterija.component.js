@@ -2,8 +2,8 @@ angular.
   	module('galantPage', ['jkuri.gallery']).
   	component('galantPage', {
     	templateUrl: 'pages/galanterija/galanterija.template.html',
-    	controller: ['$scope', '$document',
-        function storeController($scope, $document) {
+    	controller: ['$scope', '$document', '$http', '$routeParams', 'DataService',
+        function storeController($scope, $document, $http, $routeParams, DataService) {
           var self = this;
           self.images = [
               {thumb: 'assets/img/galanterija/g1.jpg', img: 'assets/img/galanterija/g1.jpg'},
@@ -34,6 +34,45 @@ angular.
               {thumb: 'assets/img/galanterija/g26.jpg', img: 'assets/img/galanterija/g26.jpg'},
               {thumb: 'assets/img/galanterija/g27.jpg', img: 'assets/img/galanterija/g28.jpg'}
           ];
+
+          $scope.API = 'ekoPlanAPI/';
+
+          var self = this;
+          this.orderProp = 'age';
+
+          //get category 
+          $scope.getCategory = function() {
+            $scope.getCategoryService(function(data){
+              $scope.data = {
+                model: null,
+              }
+              $scope.categories = data;
+              self.categories = $scope.categories;
+            });
+          }
+
+          $scope.getCategoryService = function(callback) {
+            $http({
+                  method: 'POST',
+                  url: $scope.API + 'Category/getCategory',
+                  dataType: 'json',
+                  headers: {
+                      'Content-Type': 'application/json'
+                  },
+                  // data: JSON.stringify({
+                  //       'data': data
+                  // }),
+              }).then(function(res) {
+                  if(callback) {
+                    callback(res.data);
+                  }
+              }).catch(function(e) {
+                console.log('error', e)
+                  // d.reject(e);
+              });
+          }
+
+          $scope.getCategory();
         }
     	]
 	});
