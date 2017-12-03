@@ -164,7 +164,7 @@ class Orders extends CI_Controller{
 			$zip = $customer['zip'];
 			$grad = $customer['city'];
 			$tel = $customer['phone'];
-			$racun = $customer['price'] + 280;
+			$racun = $customer['price'] + 180;
 
 			$to = $customer['email'];
 			$subject = 'Narudžbenica sa sajta Eko-plan';
@@ -209,7 +209,7 @@ class Orders extends CI_Controller{
 											<tr>
 												<td style='border-top: 1px solid #333;'></td>
 												<td style='text-align: right; border-top: 1px solid #333;'>Isporuka</td>
-												<td style='text-align: right; border-top: 1px solid #333;'>280,00 RSD</td>
+												<td style='text-align: right; border-top: 1px solid #333;'>180,00 RSD</td>
 											</tr>
 											<tr>
 												<td></td>

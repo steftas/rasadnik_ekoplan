@@ -85,7 +85,7 @@ shoppingCart.prototype.addItem = function (id, name, price, quantity) {
 
 // get the total price for all items currently in the cart
 shoppingCart.prototype.getTotalPrice = function (id) {
-    var total = 280;
+    var total = 180;
     for (var i = 0; i < this.items.length; i++) {
         var item = this.items[i];
         if (id == null || item.id == id) {
