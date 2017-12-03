@@ -42,7 +42,6 @@ h1 {
 .mt-45 {margin-top: -45px !important;}
 .txt_left {text-align: left !important;}
 .txt_center {text-align: center !important;}
-.minHeight450 {min-height: 390px;}
 
 .ek-none {display: none;}
 .ek-iframe {
@@ -890,6 +889,21 @@ footer .container {position: relative;}
 }
 /*--------------END ADMIN PANEL-----------------*/
 
+/*---------------SHOP---------------------------*/
+.row.same-height {
+	margin: 0;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	flex-wrap: wrap;
+}
+.row.same-height > [class*='col-'] {
+  display: flex;
+  flex-direction: column;
+}
+/*---------------END SHOP-----------------------*/
+
 /*--------------RESPONSIVE-----------------*/
 @media screen and (min-width: 768px) and (max-width: 991px) {
 	header {height: 230px;}
@@ -919,11 +933,6 @@ footer .container {position: relative;}
 
 }
 @media screen and (max-width: 767px) {
-	.minHeight450 {
-		max-height: none !important;
-		min-height: 1px !important;
-	}
-
 	header {height: 57px;}
 
 	.ek-slider {display: none;}
