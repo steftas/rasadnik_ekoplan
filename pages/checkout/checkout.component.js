@@ -72,25 +72,48 @@ angular.
 		        }
 
 		        $scope.sendMailService = function(customer, items, callback) {
-		          $http({
-		                method: 'POST',
-		                url: $scope.API + 'Orders/sendMailOrder',
-		                dataType: 'json',
-		                headers: {
-		                    'Content-Type': 'application/json'
-		                },
-		                data: JSON.stringify({
-		                      'customer': customer,
-		                      'items': items
-		                }),
-		            }).then(function(res) {
-		                if(callback) {
-		                  callback(res.data);
-		                }
-		            }).catch(function(e) {
-		              console.log('error', e)
-		                // d.reject(e);
-		            });
+		        	if ($scope.type) {
+		        		$http({
+		          	      	method: 'POST',
+			                url: $scope.API + 'Orders/sendMailOrderMKD',
+			                dataType: 'json',
+			                headers: {
+			                    'Content-Type': 'application/json'
+			                },
+			                data: JSON.stringify({
+			                      'customer': customer,
+			                      'items': items
+			                }),
+			            }).then(function(res) {
+			                if(callback) {
+			                  callback(res.data);
+			                }
+			            }).catch(function(e) {
+			              console.log('error', e)
+			                // d.reject(e);
+			            });
+
+		        	} else {
+		        		$http({
+		          	      	method: 'POST',
+			                url: $scope.API + 'Orders/sendMailOrder',
+			                dataType: 'json',
+			                headers: {
+			                    'Content-Type': 'application/json'
+			                },
+			                data: JSON.stringify({
+			                      'customer': customer,
+			                      'items': items
+			                }),
+			            }).then(function(res) {
+			                if(callback) {
+			                  callback(res.data);
+			                }
+			            }).catch(function(e) {
+			              console.log('error', e)
+			                // d.reject(e);
+			            });
+		        	}
 		        }
 
 		        $scope.createOrders = function(item, id, callback) {
