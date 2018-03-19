@@ -12,6 +12,16 @@ angular.
 		        $scope.store = DataService.store;
 		        $scope.cart = DataService.cart;
 
+		        $scope.type = false;
+
+		        console.log($scope.cart.items);
+
+		        for (var i = 0; i < $scope.cart.items.length; i++) {
+		        	if ( $scope.cart.items[i].type === 'За македонскиот пазар') {
+		        		$scope.type = true;
+		        	}
+		        }
+
 		        var self = this;
 
   				//get category 
@@ -29,10 +39,7 @@ angular.
 		                dataType: 'json',
 		                headers: {
 		                    'Content-Type': 'application/json'
-		                },
-		                // data: JSON.stringify({
-		                //       'data': data
-		                // }),
+		                }
 		            }).then(function(res) {
 		                if(callback) {
 		                  callback(res.data);

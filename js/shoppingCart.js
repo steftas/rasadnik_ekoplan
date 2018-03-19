@@ -1,11 +1,14 @@
 ﻿//----------------------------------------------------------------
 // shopping cart
 //
+var MKDtype = false;
+
 function shoppingCart(cartName) {
     this.cartName = cartName;
     this.clearCart = false;
     this.checkoutParameters = {};
     this.items = [];
+    this.type = '';
 
     // load items from local storage when initializing
     this.loadItems();
@@ -29,8 +32,8 @@ shoppingCart.prototype.loadItems = function () {
             var items = JSON.parse(items);
             for (var i = 0; i < items.length; i++) {
                 var item = items[i];
-                if (item.id != null && item.name != null && item.price != null && item.quantity != null) {
-                    item = new cartItem(item.id, item.name, item.price, item.quantity);
+                if (item.id != null && item.name != null && item.price != null && item.type != null && item.quantity != null) {
+                    item = new cartItem(item.id, item.name, item.price, item.type, item.quantity);
                     this.items.push(item);
                 }
             }
@@ -49,7 +52,11 @@ shoppingCart.prototype.saveItems = function () {
 }
 
 // adds an item to the cart
-shoppingCart.prototype.addItem = function (id, name, price, quantity) {
+shoppingCart.prototype.addItem = function (id, name, price, type, quantity) {
+    if (type === 'За македонскиот пазар') {
+        MKDtype = true;
+    }
+
     quantity = this.toNumber(quantity);
     if (quantity != 0) {
 
@@ -68,7 +75,7 @@ shoppingCart.prototype.addItem = function (id, name, price, quantity) {
 
         // new item, add now
         if (!found) {
-            var item = new cartItem(id, name, price, quantity);
+            var item = new cartItem(id, name, price, type, quantity);
             this.items.push(item);
         }
 
@@ -85,14 +92,25 @@ shoppingCart.prototype.addItem = function (id, name, price, quantity) {
 
 // get the total price for all items currently in the cart
 shoppingCart.prototype.getTotalPrice = function (id) {
-    var total = 180;
-    for (var i = 0; i < this.items.length; i++) {
-        var item = this.items[i];
-        if (id == null || item.id == id) {
-            total += this.toNumber(item.quantity * item.price);
+    if (MKDtype) {
+        var total = 120;
+        for (var i = 0; i < this.items.length; i++) {
+            var item = this.items[i];
+            if (id == null || item.id == id) {
+                total += this.toNumber(item.quantity * item.price);
+            }
         }
+        return total;
+    } else {
+        var total = 180;
+        for (var i = 0; i < this.items.length; i++) {
+            var item = this.items[i];
+            if (id == null || item.id == id) {
+                total += this.toNumber(item.quantity * item.price);
+            }
+        }
+        return total;
     }
-    return total;
 }
 
 // get the total price for all items currently in the cart
@@ -337,10 +355,11 @@ function checkoutParameters(serviceName, merchantID, options) {
 //----------------------------------------------------------------
 // items in the cart
 //
-function cartItem(id, name, price, quantity) {
+function cartItem(id, name, price, type, quantity) {
     this.id = id;
     this.name = name;
     this.price = price * 1;
+    this.type = type;
     this.quantity = quantity * 1;
 }
 

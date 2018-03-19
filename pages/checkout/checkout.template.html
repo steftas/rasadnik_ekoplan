@@ -62,15 +62,16 @@
             <th>Cena</th>
             <th></th>
           </thead>
-
+          
           <tbody>
             <tr ng-repeat="item in cart.items">
               <td>{{item.name}}</td>
               <td>{{item.price}},00 RSD</td>
               <td>{{item.quantity}}</td>
-              <td>{{item.price * item.quantity}},00 RSD</td>
+              <td ng-if="item.type === 'За македонскиот пазар'">{{item.price * item.quantity}},00 MKD</td>
+              <td ng-if="item.type !== 'За македонскиот пазар'">{{item.price * item.quantity}},00 RSD</td>
               <td>
-                <a href="" ng-click="cart.addItem(item.id, item.name, item.price, -10000000)" class="ek-cart_remove">
+                <a href="" ng-click="cart.addItem(item.id, item.name, item.price, item.type, -10000000)" class="ek-cart_remove">
                   <i class="fa fa-times" aria-hidden="true"></i>
                 </a>
               </td>
@@ -81,12 +82,14 @@
             <tr>
               <td colspan="2"></td>
               <td>ISPORUKA</td>
-              <td>180,00 RSD</td>
+              <td ng-if="type">120,00 MKD</td>
+              <td ng-if="!type">180,00 RSD</td>
             </tr>
             <tr>
               <td colspan="2"></td>
               <td>UKUPNO</td>
-              <td>{{cart.getTotalPrice()}},00 RSD</td>
+              <td ng-if="type">{{cart.getTotalPrice()}},00 MKD</td>
+              <td ng-if="!type">{{cart.getTotalPrice()}},00 RSD</td>
             </tr>
           </tfoot>
         </table>

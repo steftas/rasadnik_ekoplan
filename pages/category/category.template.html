@@ -46,10 +46,15 @@
 		<div class="container">
 			<div class="ek-category_info row">
 				<div class="ek-site_map">
-					Eko-plan > <span>{{$ctrl.products[0].categoryName}}</span>
+					Eko-plan > <span>{{categoryNameId}}</span>
 				</div>
 				<div class="ek-shop_txt">
-					<p class="txt_center">* Isporuka sadnica na teritoriji cele Srbije * Plaćanje po uzećem * Poštarina samo 180 RSD *</p>
+					<p class="txt_center" ng-if="categoryNameId !== 'За македонскиот пазар'">
+						* Isporuka sadnica na teritoriji cele Srbije * Plaćanje po uzećem * Poštarina samo 180 RSD *
+					</p>
+					<p class="txt_center" ng-if="categoryNameId === 'За македонскиот пазар'">
+						* Isporuka sadnica na teritoriji Makedonije * Poštarina 120 MKD *
+					</p>
 				</div>
 				<div class="ek-product_search_div">
 					<input type="text" name="product_search" placeholder="Pretraga proizvoda" ng-model="$ctrl.query">
@@ -81,11 +86,16 @@
 										<img ng-src="{{product.images[0]}}" class="ek-item_img">
 									</div>
 									<div class="ek-item_data">
-										<p class="ek-item_price">{{product.price}},00 RSD</p>
+										<p class="ek-item_price" ng-if="categoryNameId === 'За македонскиот пазар'">
+											{{product.price}},00 MKD
+										</p>
+										<p class="ek-item_price" ng-if="categoryNameId !== 'За македонскиот пазар'">
+											{{product.price}},00 RSD
+										</p>
 										<p class="ek-item_name">{{product.name}}</p>
 									</div>
 								</a>
-								<button ng-class="{true:'ek-add_button', false:'ek-stock_out'}[product.stock]" ng-click="cart.addItem(product.id, product.name, product.price, 1)" ng-disabled="product.stock == 'false'"></button>
+								<button ng-class="{true:'ek-add_button', false:'ek-stock_out'}[product.stock]" ng-click="cart.addItem(product.id, product.name, product.price, product.categoryName, 1)" ng-disabled="product.stock == 'false'"></button>
 							</div><!-- end ek-item-->					
 						</div><!-- end col-sm-4-->
 					</div>
@@ -112,15 +122,31 @@
 								<span>{{cart.getTotalCount()}} proizvod(a)</span>
 							</div>			
 						</div>
-						<div class="ek-cart_body" ng-class="{true:'ek-none', false:'ek-cart_body'}[cart.getTotalCount() == 0]">
+						<div class="ek-cart_body"
+							 ng-class="{true:'ek-none', false:'ek-cart_body'}[cart.getTotalCount() == 0]"
+							 ng-if="categoryNameId !== 'За македонскиот пазар'">
 							<p ng-repeat="item in cart.items">
 								{{item.quantity}} x {{item.name}} <span>{{item.price * item.quantity}},00 RSD</span>
-					            <a ng-click="cart.addItem(item.id, item.name, item.price, -10000000)" class="ek-cart_remove">
+					            <a ng-click="cart.addItem(item.id, item.name, item.price, item.type, -10000000)" class="ek-cart_remove">
 					            	<i class="fa fa-times" aria-hidden="true"></i>
 					            </a>
 					        </p>
 							<p class="ek-cart_delivery">Isporuka <span>180,00 RSD</span></p>
 							<p class="ek-cart_allprice">UKUPNO <span>{{cart.getTotalPrice()}},00 RSD</span></p>
+							<button class="ek-cart_pay" onclick="location.href='#!/checkout';" ng-disabled="cart.getTotalCount() < 1">Naruči</button>
+						</div>
+
+						<div class="ek-cart_body"
+							 ng-class="{true:'ek-none', false:'ek-cart_body'}[cart.getTotalCount() == 0]"
+							 ng-if="categoryNameId === 'За македонскиот пазар'">
+							<p ng-repeat="item in cart.items">
+								{{item.quantity}} x {{item.name}} <span>{{item.price * item.quantity}},00 MKD</span>
+					            <a ng-click="cart.addItem(item.id, item.name, item.price, item.type, -10000000)" class="ek-cart_remove">
+					            	<i class="fa fa-times" aria-hidden="true"></i>
+					            </a>
+					        </p>
+							<p class="ek-cart_delivery">Isporuka <span>120,00 MKD</span></p>
+							<p class="ek-cart_allprice">UKUPNO <span>{{cart.getTotalPrice()}},00 MKD</span></p>
 							<button class="ek-cart_pay" onclick="location.href='#!/checkout';" ng-disabled="cart.getTotalCount() < 1">Naruči</button>
 						</div>
 
