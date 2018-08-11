@@ -54,12 +54,35 @@ class Orders extends CI_Controller{
 				'cust_adress' => $customer['address'],
 				'cust_post' => $customer['zip'],
 				'cust_city' => $customer['city'],
-				'cust_phone' => $customer['phone'],
 				'cust_email' => $customer['email'],
 				'price' => $customer['price'],
 				'seen' => 'false',
 				'active' => 'true'
 			);
+
+			if (array_key_exists('custom_added', $customer)) {
+			    $order['custom_added'] = $customer['custom_added'];
+			} else {
+				$order['custom_added'] = 'false';
+			}
+
+			if (array_key_exists('order_state', $customer)) {
+			    $order['order_state'] = $customer['order_state'];
+			}
+
+			if (array_key_exists('phone', $customer)) {
+				$order['cust_phone'] = $customer['phone'];
+			} else {
+				$order['cust_phone'] = 'Nema Broja';
+			}
+
+			if (array_key_exists('datum_dospeca', $customer)) {
+				$order['datum_dospeca'] = $customer['datum_dospeca'];
+			}
+
+			if (array_key_exists('order_text', $customer)) {
+				$order['order_text'] = $customer['order_text'];
+			}
 
 			$this->load->model('ordermodel');
 			$id = $this->ordermodel->insertOrder($order);
