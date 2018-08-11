@@ -14,7 +14,18 @@ class Product extends CI_Controller{
 		$this->load->model('productmodel');
 		$products = $this->productmodel->getProduct();
 
-		$data['result'] = $products;
+		$productSorted = array();
+		foreach ($products as $product) {
+			if ($product['prodavnicaOdabrano'] == 'true') {
+				$productSorted[] = $product;
+			}
+		}
+		foreach ($products as $product) {
+			if ($product['prodavnicaOdabrano'] != 'true') {
+				$productSorted[] = $product;
+			}
+		}
+		$data['result'] = $productSorted;
 
 		echo json_encode($data['result']);
 	}

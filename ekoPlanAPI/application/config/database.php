@@ -69,10 +69,15 @@ $active_record = TRUE;
 /* End of file database.php */
 /* Location: ./application/config/database.php */
 
-$db['default']['hostname'] = "mysql246.loopia.se";
-$db['default']['username'] = "eko_plan@r33024";
-$db['default']['password'] = "ek0pl4nr4s4dnik";
-$db['default']['database'] = "rasadnikekoplan_com_db_1";
+// $db['default']['hostname'] = "mysql246.loopia.se";
+// $db['default']['username'] = "eko_plan@r33024";
+// $db['default']['password'] = "ek0pl4nr4s4dnik";
+// $db['default']['database'] = "rasadnikekoplan_com_db_1";
+
+$db['default']['hostname'] = "localhost";
+$db['default']['username'] = "root";
+$db['default']['password'] = "";
+$db['default']['database'] = "eko_plan";
 $db['default']['dbdriver'] = "mysql";
 $db['default']['dbprefix'] = "";
 $db['default']['pconnect'] = TRUE;

@@ -14,7 +14,8 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://test.rasadnikekoplan.com/ekoPlanAPI';
+// $config['base_url']	= 'http://test.rasadnikekoplan.com/ekoPlanAPI';
+$config['base_url'] = 'http://localhost/rasadnik_ekoplan/EkoPlanAPI';
 
 /*
 |--------------------------------------------------------------------------
