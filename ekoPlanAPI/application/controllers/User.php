@@ -39,6 +39,10 @@ class User extends CI_Controller{
 		$x = 'milan';
 		print_r($user);
 	}
+
+	function getNumbers() {
+		## todo ##
+	}
 }
 
 ?>
