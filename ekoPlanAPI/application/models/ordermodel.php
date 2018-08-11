@@ -7,17 +7,6 @@ class ordermodel extends CI_Model {
  //        parent::__construct();
  //    }
 
-	function listOfOrders() {
-
-		$this->db->select();
-		$this->db->from('order');
-		$this->db->where("active = 'true'");
-		$this->db->order_by('created_time', 'desc');
-		
-		$query = $this->db->get();
-		return $query->result_array();
-	}
-
 	// function listOfOrders() {
 
 	// 	$this->db->select();
@@ -29,6 +18,17 @@ class ordermodel extends CI_Model {
 	// 	$query = $this->db->get();
 	// 	return $query->result_array();
 	// }
+
+	function listOfOrders() {
+
+		$this->db->select();
+		$this->db->from('order');
+		$this->db->where("active = 'true'");
+		$this->db->order_by('created_time', 'desc');
+		
+		$query = $this->db->get();
+		return $query->result_array();
+	}
 
 	function updateOrder() {
 		$data = array(
@@ -69,6 +69,16 @@ class ordermodel extends CI_Model {
 		$query = $this->db->get();
 		return $query->result_array();
 	}
+
+	function getMainOrder($id) {
+		$this->db->select();
+		$this->db->from('order');
+		$this->db->where('id', $id);
+
+		$query = $this->db->get();
+		return $query->first_row('array');
+	}
+
 
 	function updateOrderById($id) {
 		$data = array(

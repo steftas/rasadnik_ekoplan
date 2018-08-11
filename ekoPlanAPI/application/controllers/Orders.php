@@ -99,10 +99,20 @@ class Orders extends CI_Controller{
 		if ($_POST) {
 			$id = $_POST['id'];
 			$this->load->model('ordermodel');
-			$orders = $this->ordermodel->getOrderOfOrder($id);
-			$this->ordermodel->updateOrderById($id);
+			$order = $this->ordermodel->getMainOrder($id);
 
-			$data['result'] = $orders;
+			if ($order['custom_added'] == 'true') {
+				$data['result'] = $order['order_text'];
+			} else {
+				$orders = $this->ordermodel->getOrderOfOrder($id);
+				$data['result'] = $orders;
+			}
+
+			// $orders = $this->ordermodel->getOrderOfOrder($id);
+			// $data['result'] = $orders;
+
+			if ($order['seen'] != 'true')
+				$this->ordermodel->updateOrderById($id);			
 		}
 
 		echo json_encode($data);
