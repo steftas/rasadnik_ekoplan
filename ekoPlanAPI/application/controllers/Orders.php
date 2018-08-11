@@ -13,7 +13,31 @@ class Orders extends CI_Controller{
 		$data['result'] = false;
 		$this->load->model('ordermodel');
 		$orders = $this->ordermodel->listOfOrders();
-		// $updateSeen = $this->ordermodel->updateOrder();
+
+		# array_pop($order);
+
+		if ($orders) {
+			$today_date = date('Y-m-d');
+
+			foreach ($orders as $key => $order) {
+				if ($order['custom_added'] == 'true' && $today_date < $order['datum_dospeca']) {
+					unset($orders[$key]);
+				}
+			}
+
+			$data['result'] = array_values($orders);
+		}
+
+		echo json_encode($data);
+	}
+
+
+	function getOrdersAll() {
+		$_POST = json_decode(file_get_contents('php://input'), true);
+
+		$data['result'] = false;
+		$this->load->model('ordermodel');
+		$orders = $this->ordermodel->listOfOrders();
 
 		if ($orders) {
 			$data['result'] = $orders;
