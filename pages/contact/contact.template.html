@@ -15,6 +15,14 @@
 					</li>
 					<li>
 						<a href="#!/prodavnica" data-hover="Prodavnica">Prodavnica</a>
+						<ul>
+							<li ng-repeat="category in $ctrl.categories">
+								<a href="#!/prodavnica/{{category.name}}" data-hover="{{category.name}}">{{category.name}}</a>
+							</li>
+							<li>
+								<a href="#!/prodavnica" data-hover="Kompletna ponuda">Kompletna ponuda</a>
+							</li>
+						</ul>
 					</li>
 					<li>
 						<a href="#!/sibirski_limun" data-hover="Sibirski limun">Sibirski limun</a>
@@ -75,6 +83,10 @@
     							<input type="email" class="" id="email" placeholder="E-mail" name="email" required="">
 							</div>
 							<div class="form-group">
+								<label for="tel">Telefon</label>
+    							<input type="tel" class="" id="tel" placeholder="Broj telefona" name="tel" required="">
+							</div>
+							<div class="form-group">
 								<label for="poruka">Tekst poruke<span>*</span></label>
     							<textarea class="" name="message" id="poruka" rows="4" placeholder="Poruka"></textarea>
 							</div>
@@ -101,7 +113,7 @@
 			<div class="ek-footer_info">
 				<h2>Informacije o prodavnici</h2>
 				<p><i class="fa fa-map-marker" aria-hidden="true"></i> Eko Plan, Barska 30 16000 Leskovac</p>
-				<p><i class="fa fa-mobile" aria-hidden="true"></i></i> 0640163030 -dipl.ing. zžs Marko Milošević <br>0606177778 - Milan Milošević</p>
+				<p><i class="fa fa-mobile" aria-hidden="true"></i></i> <a href="tel:0640163030">0640163030</a> - dipl.ing. zžs Marko Milošević <br><a href="tel:0606177778">0606177778</a> - Milan Milošević</p>
 				<p><i class="fa fa-envelope" aria-hidden="true"></i> office@rasadnikekoplan.com </p>
 			</div>
 			<div class="ek-social_div">
