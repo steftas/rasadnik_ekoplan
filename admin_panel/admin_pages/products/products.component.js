@@ -11,8 +11,12 @@ angular.
           $scope.price = null;
           $scope.description = null;
           $scope.stockDesc = null;
-          $scope.stock = null;
-          $scope.firstPage = null;
+          $scope.stockVal = null;
+          $scope.firstPageVal = null;
+          $scope.drzava = null;
+          $scope.prodavnicaOdabranoVal = null;
+
+          $scope.stanje = false;
 
           //get product
           $scope.getProduct = function() {
@@ -48,21 +52,30 @@ angular.
             });
           }
 
-          $scope.editProduct = function(id, name, price, description, stockDesc, stock, firstPage, category) {
+          $scope.editProduct = function(id, name, price, description, stockDesc, stock, firstPage, category, drzava, prodavnicaOdabrano) {
             $scope.id = id;
             $scope.name = name;
             $scope.price = price;
             $scope.description = description;
             $scope.stockDesc = stockDesc;
-            $scope.stock = stock;
-            $scope.firstPage = firstPage;
+            $scope.stockVal = stock;
+            $scope.firstPageVal = firstPage;
             $scope.data.model = category;
+            $scope.prodavnicaOdabranoVal = prodavnicaOdabrano;
+            $scope.drzava = drzava;
+
+            if (stock === 'true') {
+              $scope.stanje = true;
+            } else {
+              $scope.stanje = false;
+            }
           }
-          $scope.check = function(stock) {
-            return $scope.stock = stock;
-          }
-          $scope.checkF = function(firstPage) {
-            return $scope.firstPage = firstPage;
+          $scope.checkIfTrue = function(data) {
+            if (data === 'true') {
+              return true;
+            } else {
+              return false;
+            }
           }
 
           $scope.getCategoryService = function(callback) {
@@ -161,9 +174,9 @@ angular.
           $scope.getCategory();
           $scope.getOrders();
 
-          $interval( function() {
-            $scope.getOrders();
-          }, 10000);
+          // $interval( function() {
+          //   $scope.getOrders();
+          // }, 10000);
         }
       ]
   });

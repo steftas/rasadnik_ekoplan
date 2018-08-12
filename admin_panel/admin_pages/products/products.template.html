@@ -31,9 +31,11 @@
         <th>Slike</th>
         <th>Cena</th>
         <th>Opis</th>
+        <th>Država</th>
         <th>Kategorija</th>
         <th>Stanje</th>
-        <th>Odabrane</th>
+        <th>Početna (odab.)</th>
+        <th>Prodavnica (odab.)</th>
         <th></th>
       </thead>
 
@@ -45,11 +47,13 @@
           </td>
           <td>{{product.price}},00 RSD</td>
           <td>{{product.description}}</td>
+          <td>{{product.drzava}}</td>
           <td>{{product.categoryName}}</td>
           <td><span ng-class="{true:'fa fa-check', false:'fa fa-times'}[product.stock]"></span></td>
           <td><span ng-class="{true:'fa fa-check', false:'fa fa-times'}[product.firstPage]"></span></td>
+          <td><span ng-class="{true:'fa fa-check', false:'fa fa-times'}[product.prodavnicaOdabrano]"></span></td>
           <td style="width:5%;">
-            <a href="" ng-click="editProduct(product.id, product.name, product.price, product.description, product.stockDesc,  product.stock, product.firstPage, product.categoryName)" data-toggle="modal" data-target="#productModal">
+            <a href="" ng-click="editProduct(product.id, product.name, product.price, product.description, product.stockDesc,  product.stock, product.firstPage, product.categoryName, product.drzava, product.prodavnicaOdabrano)" data-toggle="modal" data-target="#productModal">
               <i class="fa fa-pencil" aria-hidden="true"></i>
             </a>
             <a href="">
@@ -70,7 +74,7 @@
         <h4 class="modal-title" id="myModalLabel">Proizvodi</h4>
       </div>
       <div class="modal-body">
-        <form method="POST" action="http://rasadnikekoplan.com/ekoPlanAPI/Product/insertProductImage" enctype="multipart/form-data">
+        <form method="POST" action="http://localhost/rasadnik_ekoplan/ekoPlanAPI/Product/insertProductImage" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="prod_name">Ime proizvoda*</label>
                 <input type="text" class="form-control" name="name" id="prod_name" placeholder="Ime" required />
@@ -86,6 +90,14 @@
                 </select>
             </div>
             <div class="form-group">
+                <label for="drzava">Država *</label><br>
+                <select name="drzava" required>
+                  <option value="srb" selected>Srbija</option>
+                  <option value="mkd">Makedonija</option>
+                  <option value="bih">Bosna</option>
+                </select>
+            </div>
+            <div class="form-group">
                 <label for="prod_price">Cena proizvoda*</label>
                 <input type="text" name="price" class="form-control" id="prod_price" placeholder="Cena" required />
             </div>
@@ -95,7 +107,7 @@
             </div>
             <div class="form-group">
                 <label for="prod_stock">Stanje</label>
-                <input type="checkbox" name="stock" ng-checked="check(stock)" id="prod_stock" ng-click="stanje = !stanje" />
+                <input type="checkbox" name="stock" id="prod_stock" ng-click="stanje = !stanje" />
             </div>
             <div class="form-group" ng-show="!stanje">
                 <label for="prod_desc">Od kada je na stanju</label>
@@ -103,7 +115,11 @@
             </div>
             <div class="form-group">
                 <label for="prod_firstPage">Prva strana</label>
-                <input type="checkbox" name="firstPage" ng-checked="checkF(firstPage)" id="prod_firstPage" />
+                <input type="checkbox" name="firstPage" id="prod_firstPage" />
+            </div>
+            <div class="form-group">
+                <label for="prod_prodavnicaOdabrano">Prva strana u prodavnici</label>
+                <input type="checkbox" name="prodavnicaOdabrano" id="prod_prodavnicaOdabrano" />
             </div>
             <div class="modal-footer">
               <button type="button" class="ek-cart_pay" data-dismiss="modal" style="float:left;background-color:#2d1604;">Zatvori</button>
@@ -124,7 +140,7 @@
         <h4 class="modal-title" id="myModalLabel">Proizvodi</h4>
       </div>
       <div class="modal-body">
-        <form method="POST" action="http://rasadnikekoplan.com/ekoPlanAPI/Product/updateProductImage" enctype="multipart/form-data">
+        <form method="POST" action="http://localhost/rasadnik_ekoplan/ekoPlanAPI/Product/updateProductImage" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="prod_name">Ime proizvoda*</label>
                 <input type="text" value="{{name}}" name="name" class="form-control" id="prod_name" placeholder="Ime" required />
@@ -141,6 +157,14 @@
                 </select>
             </div>
             <div class="form-group">
+                <label for="drzava">Država *</label><br>
+                <select name="drzava" ng-model="drzava" required>
+                  <option value="srb" selected>Srbija</option>
+                  <option value="mkd">Makedonija</option>
+                  <option value="bih">Bosna</option>
+                </select>
+            </div>
+            <div class="form-group">
                 <label for="prod_price">Cena proizvoda*</label>
                 <input type="text" name="price" value="{{price}}" class="form-control" id="prod_price" placeholder="Cena" required />
             </div>
@@ -152,15 +176,19 @@
             </div>
             <div class="form-group">
                 <label for="prod_stock">Stanje</label>
-                <input type="checkbox" name="stock" value="{{stock}}" ng-checked="check(stock)" id="prod_stock" ng-click="stanje = !stanje" />
+                <input type="checkbox" name="stock" ng-checked="checkIfTrue(stockVal)" id="prod_stock" ng-click="stanje = !stanje" />
             </div>
-            <div class="form-group" ng-show="stanje">
+            <div class="form-group" ng-show="!stanje">
                 <label for="prod_desc">Od kada je na stanju</label>
                 <textarea name="stockDesc" class="form-control" id="prod_desc" placeholder="Od kada je na stanju" rows="4">{{stockDesc}}</textarea>
             </div>
             <div class="form-group">
                 <label for="prod_firstPage">Prva strana</label>
-                <input type="checkbox" name="firstPage" value="{{firstPage}}" ng-checked="checkF(firstPage)" id="prod_firstPage" />
+                <input type="checkbox" name="firstPage" ng-checked="checkIfTrue(firstPageVal)" id="prod_firstPage" />
+            </div>
+            <div class="form-group">
+                <label for="prod_prodavnicaOdabrano">Prva strana u prodavnici</label>
+                <input type="checkbox" name="prodavnicaOdabrano" ng-checked="checkIfTrue(prodavnicaOdabranoVal)" id="prod_prodavnicaOdabrano" />
             </div>
             <div class="modal-footer">
               <button type="button" class="ek-cart_pay" data-dismiss="modal" style="float:left;background-color:#2d1604;">Zatvori</button>

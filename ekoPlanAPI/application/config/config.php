@@ -15,7 +15,7 @@
 |
 */
 // $config['base_url']	= 'http://test.rasadnikekoplan.com/ekoPlanAPI';
-$config['base_url'] = 'http://localhost/rasadnik_ekoplan/EkoPlanAPI';
+$config['base_url'] = 'http://localhost/rasadnik_ekoplan/ekoPlanAPI';
 
 /*
 |--------------------------------------------------------------------------

@@ -118,6 +118,7 @@ class Product extends CI_Controller{
 				'categoryName' => $_POST['categorySelect'],
 				'description' => $_POST['description'],
 				'stockDesc' => $_POST['stockDesc'],
+				'drzava' => $_POST['drzava'],
 				'active' => 'true'
 			);
 
@@ -134,6 +135,12 @@ class Product extends CI_Controller{
 				$params['firstPage'] = 'true';			
 			} else {
 				$params['firstPage'] = 'false';
+			}
+
+			if (isset($_POST['prodavnicaOdabrano'])) {
+				$params['prodavnicaOdabrano'] = 'true';
+			} else {
+				$params['prodavnicaOdabrano'] = 'false';
 			}
 		}
 
@@ -221,6 +228,9 @@ class Product extends CI_Controller{
 			if (isset($_POST['description']))
 				$params['description'] = $_POST['description'];
 
+			if (isset($_POST['drzava']))
+				$params['drzava'] = $_POST['drzava'];
+
 			if (isset($_POST['stock'])) {
 				$params['stock'] = 'true';			
 			} else {
@@ -234,6 +244,12 @@ class Product extends CI_Controller{
 				$params['firstPage'] = 'true';			
 			} else {
 				$params['firstPage'] = 'false';
+			}
+
+			if (isset($_POST['prodavnicaOdabrano'])) {
+				$params['prodavnicaOdabrano'] = 'true';			
+			} else {
+				$params['prodavnicaOdabrano'] = 'false';
 			}
 
 			print($_POST['categorySelect']);
