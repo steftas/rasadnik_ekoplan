@@ -1,20 +1,13 @@
 angular.
-  	module('adminOrders').
-  	component('adminOrders', {
-    	templateUrl: 'admin_panel/admin_pages/orders/orders.template.html',
+  	module('adminOrdersMkd').
+  	component('adminOrdersMkd', {
+    	templateUrl: 'admin_panel/admin_pages/ordersMKD/orders.template.html',
     	controller: ['$http', '$scope', '$interval',
         	function adminOrdersController($http, $scope, $interval) {
             $scope.API = 'ekoPlanAPI/';
         		var self = this;
             $scope.state = {};
             $scope.orders = {};
-            $scope.customer = {};
-
-            $(function() {
-              $("#datepicker").datepicker({
-                dateFormat: 'yy-mm-dd',
-              });
-            });
 
             $scope.init = function() {
               $scope.getOrders();
@@ -40,7 +33,7 @@ angular.
 
               $scope.init();
               $("#orders").modal();
-            }            
+            }   
 
             $scope.getOrders = function() {
 
@@ -135,7 +128,7 @@ angular.
             $scope.createOrders = function() {
               var customer = $scope.customer;
 
-              customer['order_state'] = 'srb';
+              customer['order_state'] = 'mkd';
               customer['price'] = 0;
               customer['custom_added'] = true;
 

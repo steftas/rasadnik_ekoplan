@@ -9,8 +9,16 @@
 <div class="ek-admin_side_nav">
   <ul>
     <li class="mt0">
-      <a href="#!/admin_porudzbine">Porudžbine</a>
-      <span class="ek-admin_notification">{{($ctrl.orders | filter: {seen: false}).length}}</span>
+      <a href="#!/admin_porudzbine">Porudžbine (SRB)</a>
+      <span class="ek-admin_notification">{{($ctrl.orders | filter: {seen: false} | filter: {order_state: 'srb'}).length}}</span>
+    </li>
+    <li>
+      <a href="#!/admin_porudzbine_mkd">Porudžbine (MKD)</a>
+      <span class="ek-admin_notification">{{($ctrl.orders | filter: {seen: false} | filter: {order_state: 'mkd'}).length}}</span>
+    </li>
+    <li>
+      <a href="#!/admin_porudzbine_bih">Porudžbine (BIH)</a>
+      <span class="ek-admin_notification">{{($ctrl.orders | filter: {seen: false} | filter: {order_state: 'bih'}).length}}</span>
     </li>
     <li>
       <a href="#!/admin_kategorije">Kategorije</a>
@@ -74,7 +82,7 @@
         <h4 class="modal-title" id="myModalLabel">Proizvodi</h4>
       </div>
       <div class="modal-body">
-        <form method="POST" action="http://localhost/rasadnik_ekoplan/ekoPlanAPI/Product/insertProductImage" enctype="multipart/form-data">
+        <form method="POST" action="http://dev.rasadnikekoplan.com/ekoPlanAPI/Product/insertProductImage" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="prod_name">Ime proizvoda*</label>
                 <input type="text" class="form-control" name="name" id="prod_name" placeholder="Ime" required />
@@ -140,7 +148,7 @@
         <h4 class="modal-title" id="myModalLabel">Proizvodi</h4>
       </div>
       <div class="modal-body">
-        <form method="POST" action="http://localhost/rasadnik_ekoplan/ekoPlanAPI/Product/updateProductImage" enctype="multipart/form-data">
+        <form method="POST" action="http://dev.rasadnikekoplan.com/ekoPlanAPI/Product/updateProductImage" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="prod_name">Ime proizvoda*</label>
                 <input type="text" value="{{name}}" name="name" class="form-control" id="prod_name" placeholder="Ime" required />

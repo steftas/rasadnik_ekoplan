@@ -85,7 +85,7 @@ class Orders extends CI_Controller{
 			);
 
 			if (array_key_exists('custom_added', $customer)) {
-			    $order['custom_added'] = $customer['custom_added'];
+			    $order['custom_added'] = 'true';
 			} else {
 				$order['custom_added'] = 'false';
 			}

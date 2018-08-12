@@ -8,28 +8,28 @@
 </div>
 <div class="ek-admin_side_nav">
 	<ul>
-		<li class="ek-active mt0">
-			<a href="#!/admin_porudzbine">Porudžbine (SRB)</a>
-			<span class="ek-admin_notification">{{($ctrl.orders | filter: {seen: false} | filter: {order_state: 'srb'}).length}}</span>
-		</li>
+		<li class="mt0">
+      <a href="#!/admin_porudzbine">Porudžbine (SRB)</a>
+      <span class="ek-admin_notification">{{($ctrl.orders | filter: {seen: false} | filter: {order_state: 'srb'}).length}}</span>
+    </li>
     <li>
       <a href="#!/admin_porudzbine_mkd">Porudžbine (MKD)</a>
       <span class="ek-admin_notification">{{($ctrl.orders | filter: {seen: false} | filter: {order_state: 'mkd'}).length}}</span>
     </li>
-    <li>
+    <li class="ek-active">
       <a href="#!/admin_porudzbine_bih">Porudžbine (BIH)</a>
       <span class="ek-admin_notification">{{($ctrl.orders | filter: {seen: false} | filter: {order_state: 'bih'}).length}}</span>
     </li>
-		<li>
-			<a href="#!/admin_kategorije">Kategorije</a>
-		</li>
-		<li>
-			<a href="#!/admin_proizvodi">Proizvodi</a>
-		</li>
+    <li>
+      <a href="#!/admin_kategorije">Kategorije</a>
+    </li>
+    <li>
+      <a href="#!/admin_proizvodi">Proizvodi</a>
+    </li>
 	</ul>
 </div>
 <content class="ek-admin_orders">
-	<h2>Porudžbine (SRB)</h2>
+	<h2>Porudžbine (BIH)</h2>
 
   <button class="ek-cart_pay" data-toggle="modal" data-target="#orderModalADD">Dodaj novu porudžbenicu</button>
 
@@ -48,7 +48,7 @@
       </thead>
 
       <tbody>
-        <tr ng-repeat="order in orders" ng-if="order.order_state === 'srb'" ng-class="{true:'', false:'ek-order_seen'}[order.seen]">
+        <tr ng-repeat="order in orders" ng-if="order.order_state === 'bih'" ng-class="{true:'', false:'ek-order_seen'}[order.seen]">
           <td>{{order.created_time}}</td>
           <td>{{order.cust_name}} {{order.cust_lname}}</td>
           <td>{{order.cust_adress}}, {{order.cust_post}}, {{order.cust_city}}</td>
@@ -57,7 +57,7 @@
           <td>
             <button class="btn btn-primary" ng-click="listOfOrders(order)"> Lista </button>
           </td>
-          <td>{{order.price}},00 RSD</td>
+          <td>{{order.price}},00 KM</td>
           <td style="width:5%;">
             <a href="">
               <i class="fa fa-remove" aria-hidden="true" ng-click="deleteOrder(order.id)"></i>
@@ -96,7 +96,6 @@
           {{customText}}
         </div>
       </div>
-
     </div>
   </div>
 </div>
@@ -106,7 +105,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Nova porudžbina SRB</h4>
+        <h4 class="modal-title" id="myModalLabel">Nova porudžbina BIH</h4>
       </div>
 
       <div class="modal-body">
@@ -165,3 +164,4 @@
     </div>
   </div>
 </div>
+

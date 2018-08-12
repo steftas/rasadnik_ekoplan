@@ -41,6 +41,12 @@ var EkoPlan = angular.
         when('/admin_porudzbine', {
           template: '<admin-orders></admin-orders>'
         }).
+        when('/admin_porudzbine_mkd', {
+          template: '<admin-orders-mkd></admin-orders-mkd>'
+        }).
+        when('/admin_porudzbine_bih', {
+          template: '<admin-orders-bih></admin-orders-bih>'
+        }).
         when('/admin_proizvodi', {
           template: '<admin-products></admin-products>'
         }).

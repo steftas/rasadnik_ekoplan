@@ -8,17 +8,25 @@
 </div>
 <div class="ek-admin_side_nav">
 	<ul>
-		<li class="mt0">
-			<a href="#!/admin_porudzbine">Porudžbine</a>
-			<span class="ek-admin_notification">{{($ctrl.orders | filter: {seen: false}).length}}</span>
-		</li>
-		<li class="ek-active">
-			<a href="#!/admin_kategorije">Kategorije</a>
-		</li>
-		<li>
-			<a href="#!/admin_proizvodi">Proizvodi</a>
-		</li>
-	</ul>
+    <li class="mt0">
+      <a href="#!/admin_porudzbine">Porudžbine (SRB)</a>
+      <span class="ek-admin_notification">{{($ctrl.orders | filter: {seen: false} | filter: {order_state: 'srb'}).length}}</span>
+    </li>
+    <li>
+      <a href="#!/admin_porudzbine_mkd">Porudžbine (MKD)</a>
+      <span class="ek-admin_notification">{{($ctrl.orders | filter: {seen: false} | filter: {order_state: 'mkd'}).length}}</span>
+    </li>
+    <li>
+      <a href="#!/admin_porudzbine_bih">Porudžbine (BIH)</a>
+      <span class="ek-admin_notification">{{($ctrl.orders | filter: {seen: false} | filter: {order_state: 'bih'}).length}}</span>
+    </li>
+    <li class="ek-active">
+      <a href="#!/admin_kategorije">Kategorije</a>
+    </li>
+    <li>
+      <a href="#!/admin_proizvodi">Proizvodi</a>
+    </li>
+  </ul>
 </div>
 <content class="ek-admin_orders">
 	<h2>Kategorije</h2>
@@ -62,8 +70,7 @@
         <h4 class="modal-title" id="myModalLabel">Kategorija</h4>
       </div>
       <div class="modal-body">
-        <form method="POST" action="http://rasadnikekoplan.com/ekoPlanAPI/Category/updateCategoryImage" enctype="multipart/form-data">
-       	<!-- <form method="POST" action="localhost/ekoPlanAPI/Category/insertCategoryImage"> -->
+        <form method="POST" action="http://dev.rasadnikekoplan.com/ekoPlanAPI/Category/updateCategoryImage" enctype="multipart/form-data">
        		  <div class="form-group">
                 <label for="cat_name">Ime kategorije*</label>
                 <input type="text" value="{{name}}" ng-model="name" name="updateName" class="form-control" id="cat_name" placeholder="Ime" required />
@@ -79,16 +86,10 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="ek-cart_pay" data-dismiss="modal" style="float:left;background-color:#2d1604;">Zatvori</button>
-              <!-- <button type="button" class="ek-cart_pay" ng-click="saveEditCategory()">Sačuvaj</button> -->
               <button type="submit" class="ek-cart_pay" >Sačuvaj</button>
             </div>
        	</form>
       </div>
-     <!--  <div class="modal-footer"> -->
-       <!--  <button type="button" class="ek-cart_pay" data-dismiss="modal" style="float:left;background-color:#2d1604;">Zatvori</button> -->
-        <!-- <button type="button" class="ek-cart_pay" ng-click="saveEditCategory()">Sačuvaj</button> -->
-        <!-- <button type="submit" class="ek-cart_pay" >Sačuvaj</button> -->
-     <!--  </div> -->
     </div>
   </div>
 </div>
@@ -101,8 +102,7 @@
         <h4 class="modal-title" id="myModalLabel">Kategorija</h4>
       </div>
       <div class="modal-body">
-        <!-- <form method="" action=""> -->
-        <form method="POST" action="http://rasadnikekoplan.com/ekoPlanAPI/Category/insertCategoryImage" enctype="multipart/form-data">
+        <form method="POST" action="http://dev.rasadnikekoplan.com/ekoPlanAPI/Category/insertCategoryImage" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="cat_name">Ime kategorije*</label>
                 <input type="text" class="form-control" id="cat_name" ng-model="categoryName" name="categoryName" placeholder="Ime" required />
@@ -115,20 +115,12 @@
                 <label for="cat_firstPage">Prva strana</label>
                 <input type="checkbox" ng-model="categoryFirsPage" name="categoryFirsPage" ng-checked="checked(categoryFirsPage)" id="cat_firstPage" />
             </div>
-            <!-- <button type="submit" class="ek-cart_pay" >Sačuvaj</button> -->
             <div class="modal-footer">
               <button type="button" class="ek-cart_pay" data-dismiss="modal" style="float:left;background-color:#2d1604;">Zatvori</button>
-              <!-- <button type="button" class="ek-cart_pay" ng-click="saveCategory()">Sačuvaj</button> -->
               <button type="submit" class="ek-cart_pay" >Sačuvaj</button>
             </div>
         </form>
       </div>
-      <!-- <div class="modal-footer"> -->
-        <!-- <button type="button" class="ek-cart_pay" data-dismiss="modal" style="float:left;background-color:#2d1604;">Zatvori</button> -->
-        <!-- <button type="button" class="ek-cart_pay" ng-click="saveCategory()">Sačuvaj</button> -->
-        <!-- <button type="submit" class="ek-cart_pay" >Sačuvaj</button> -->
-      <!-- </div> -->
-      
     </div>
   </div>
 </div>

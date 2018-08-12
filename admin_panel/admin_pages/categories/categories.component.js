@@ -52,7 +52,11 @@ angular.
             }
 
             $scope.checkF = function(firstPage) {
-              return $scope.firstPage = firstPage;
+              if (firstPage == 'true') {
+                return true;
+              } else {
+                return false
+              }
             }
 
             $scope.saveEditCategory = function() {
@@ -226,9 +230,9 @@ angular.
             $scope.getOrders();
             $scope.getCategory();
 
-            $interval( function() {
-              $scope.getOrders();
-            }, 10000);
+            // $interval( function() {
+            //   $scope.getOrders();
+            // }, 10000);
         }
       ]
   });

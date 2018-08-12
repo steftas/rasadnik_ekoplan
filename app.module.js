@@ -12,6 +12,8 @@ angular.module("eko-plan", [
 	'indexPage',
 	'adminPage',
 	'adminOrders',
+	'adminOrdersBih',
+	'adminOrdersMkd',
 	'adminProducts',
 	'adminCategories',
 ]);
