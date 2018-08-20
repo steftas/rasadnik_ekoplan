@@ -18,6 +18,25 @@ class Root extends CI_Controller{
 
 		// echo json_encode($x);
 
+		// $redirect_url = 'assets/test.txt';
+		// header('Location: '. $redirect_url);
+
+		$list = array (
+		    array('aaa', 'bbb', 'ccc', 'dddd'),
+		    array('123', '456', '789'),
+		    array('"aaa"', '"bbb"')
+		);
+		$redirect_url = 'assets/file.csv';
+
+		$fp = fopen('assets/file.csv', 'w');
+
+		foreach ($list as $fields) {
+		    fputcsv($fp, $fields);
+		}
+
+		fclose($fp);
+
+		header('Location: '. $redirect_url);
 	}
 
 	function test() 

@@ -75,9 +75,9 @@ $active_record = TRUE;
 // $db['default']['database'] = "rasadnikekoplan_com_db_1";
 
 $db['default']['hostname'] = "localhost";
-$db['default']['username'] = "stefan";
-$db['default']['password'] = "Stasic89@";
-$db['default']['database'] = "rasadnikekoplan_com_db_1";
+$db['default']['username'] = "root";
+$db['default']['password'] = "";
+$db['default']['database'] = "eko_plan";
 $db['default']['dbdriver'] = "mysql";
 $db['default']['dbprefix'] = "";
 $db['default']['pconnect'] = TRUE;
